@@ -4,9 +4,10 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 COPY package*.json ./
-# --ignore-scripts: skip the postinstall `prisma generate` here (schema not copied yet).
-# The builder stage runs `prisma generate` explicitly after copying the schema.
-RUN npm ci --ignore-scripts
+# Copy the Prisma schema BEFORE install so the postinstall `prisma generate`
+# finds it and downloads the query + schema engines into node_modules/@prisma/engines.
+COPY prisma ./prisma
+RUN npm ci
 
 FROM base AS builder
 WORKDIR /app
@@ -28,12 +29,14 @@ RUN apk add --no-cache openssl
 COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
+# chown so the non-root `nextjs` user can run `prisma migrate deploy` at startup
+# (it may touch node_modules/@prisma/engines).
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
 # Ship the pinned Prisma CLI so `migrate deploy` runs the same v5 at startup
 # instead of npx fetching a newer (incompatible) Prisma from the network.
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
 
 USER nextjs
 EXPOSE 3000
