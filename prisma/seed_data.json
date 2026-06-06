@@ -1,0 +1,4454 @@
+{
+ "months2026": [
+  {
+   "year": 2026,
+   "month": 1,
+   "revenueActual": 4733103,
+   "revenueFaceVal": 4005820,
+   "revenueBudget": 4800000,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入(現金)",
+     "amount": 4733103,
+     "note": "本期回收12月份貨款"
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "市場-小哥",
+     "amount": 1277188,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "南部-承樑",
+     "amount": 49302,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "貨主-詩育",
+     "amount": 1387692,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 54414,
+     "note": "3號"
+    },
+    {
+     "category": "FIXED",
+     "label": "賓士",
+     "amount": 37130,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "裕隆-5381",
+     "amount": 7104,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "小車-3875",
+     "amount": 11413,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "房租",
+     "amount": 65000,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀循環息",
+     "amount": 9542,
+     "note": "7號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸-9983",
+     "amount": 16985,
+     "note": "9號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車",
+     "amount": 37400,
+     "note": "13號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企貸款",
+     "amount": 5133,
+     "note": "23號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企青創",
+     "amount": 17657,
+     "note": "25號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車_6687",
+     "amount": 16800,
+     "note": "1號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸6738",
+     "amount": 29980,
+     "note": "15號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 140994,
+     "note": "2號"
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 639641,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "勞健保費用",
+     "amount": 61226,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_中和_早餐",
+     "amount": 26000,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_市場_早餐",
+     "amount": 4315,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "中區支出",
+     "amount": 25930,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "油資",
+     "amount": 20665,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "電信費用(公司電信)",
+     "amount": 1604,
+     "note": "（含網路、監視器費用）"
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電費用",
+     "amount": 500,
+     "note": "中和水費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "停車費",
+     "amount": 6455,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金& 水電費-市場",
+     "amount": 14120,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "車輛修理費(5818)",
+     "amount": 48360,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "設備_切絲機",
+     "amount": 6600,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "尾牙",
+     "amount": 85000,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "雜費",
+     "amount": 14400,
+     "note": ""
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "小哥（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "詩育（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    }
+   ],
+   "employees": [
+    {
+     "name": "簡千富",
+     "salary": 50000
+    },
+    {
+     "name": "簡詩育",
+     "salary": 50000
+    },
+    {
+     "name": "王家裕",
+     "salary": 48000
+    },
+    {
+     "name": "張美菲",
+     "salary": 45000
+    },
+    {
+     "name": "Becky",
+     "salary": 40000
+    },
+    {
+     "name": "古翊良",
+     "salary": 45000
+    },
+    {
+     "name": "張維昇",
+     "salary": 50000
+    },
+    {
+     "name": "簡宏典",
+     "salary": 40000
+    },
+    {
+     "name": "洪于妮",
+     "salary": 38000
+    },
+    {
+     "name": "簡承樑",
+     "salary": 18000
+    },
+    {
+     "name": "莊子慶",
+     "salary": 53000
+    },
+    {
+     "name": "小林",
+     "salary": 50000
+    },
+    {
+     "name": "陳志超",
+     "salary": 50000
+    },
+    {
+     "name": "阿畢",
+     "salary": 29480
+    },
+    {
+     "name": "紅翠",
+     "salary": 33161
+    }
+   ],
+   "suppliers": [
+    {
+     "name": "程農",
+     "amount": 378100
+    },
+    {
+     "name": "曾記",
+     "amount": 138584
+    },
+    {
+     "name": "夏龍",
+     "amount": 87100
+    },
+    {
+     "name": "西螺-洋蔥",
+     "amount": 38400
+    },
+    {
+     "name": "崙背",
+     "amount": 123690
+    },
+    {
+     "name": "水果",
+     "amount": 0
+    },
+    {
+     "name": "有機菜",
+     "amount": 0
+    },
+    {
+     "name": "小瓊",
+     "amount": 213189
+    },
+    {
+     "name": "林得記紅蘿蔔",
+     "amount": 9080
+    },
+    {
+     "name": "三崧",
+     "amount": 27700
+    },
+    {
+     "name": "日豪",
+     "amount": 0
+    },
+    {
+     "name": "可可可",
+     "amount": 0
+    },
+    {
+     "name": "富帆",
+     "amount": 0
+    },
+    {
+     "name": "開元",
+     "amount": 970
+    },
+    {
+     "name": "山多利玉米筍",
+     "amount": 64108
+    },
+    {
+     "name": "大成雞蛋",
+     "amount": 31800
+    },
+    {
+     "name": "冷凍青花-曲成",
+     "amount": 0
+    },
+    {
+     "name": "毛豆仁",
+     "amount": 0
+    },
+    {
+     "name": "舒可泰",
+     "amount": 19120
+    },
+    {
+     "name": "大漢板豆腐",
+     "amount": 0
+    },
+    {
+     "name": "番蛙",
+     "amount": 0
+    },
+    {
+     "name": "檸檬",
+     "amount": 0
+    },
+    {
+     "name": "黑橋牌",
+     "amount": 6080
+    },
+    {
+     "name": "家樂福",
+     "amount": 26531
+    },
+    {
+     "name": "北農拍買",
+     "amount": 210920
+    },
+    {
+     "name": "科盈鳥蛋",
+     "amount": 12320
+    }
+   ]
+  },
+  {
+   "year": 2026,
+   "month": 2,
+   "revenueActual": 5154448,
+   "revenueFaceVal": 3583409,
+   "revenueBudget": 4800000,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入(現金)",
+     "amount": 5154448,
+     "note": "本期回收10月份貨款"
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "市場-小哥",
+     "amount": 771157,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "南部-承樑",
+     "amount": 40294,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "貨主-詩育",
+     "amount": 1343793,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 54414,
+     "note": "3號"
+    },
+    {
+     "category": "FIXED",
+     "label": "賓士",
+     "amount": 37130,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "裕隆-5381",
+     "amount": 7104,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "小車-3875",
+     "amount": 11413,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "房租",
+     "amount": 65000,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀循環息",
+     "amount": 9542,
+     "note": "7號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸-9983",
+     "amount": 16985,
+     "note": "9號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車",
+     "amount": 37400,
+     "note": "13號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企貸款",
+     "amount": 5133,
+     "note": "23號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企青創",
+     "amount": 17657,
+     "note": "25號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車_6687",
+     "amount": 16800,
+     "note": "1號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸6738",
+     "amount": 29980,
+     "note": "15號"
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_一銀",
+     "amount": 150000,
+     "note": "3號"
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 617955,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "勞健保費用",
+     "amount": 61226,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_中和_早餐",
+     "amount": 24960,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_市場_早餐",
+     "amount": 1115,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "中區支出",
+     "amount": 25930,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "油資",
+     "amount": 31701,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "電信費用(公司電信)",
+     "amount": 1604,
+     "note": "（含網路、監視器費用）"
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電費用",
+     "amount": 500,
+     "note": "中和水費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "停車費",
+     "amount": 610,
+     "note": "市場"
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金& 水電費-市場",
+     "amount": 14228,
+     "note": "283水、6697電、7248租"
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "車輛保養費3875",
+     "amount": 15700,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "車輛保養費6738",
+     "amount": 4600,
+     "note": ""
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "小哥（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "詩育（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    }
+   ],
+   "employees": [
+    {
+     "name": "簡千富",
+     "salary": 50000
+    },
+    {
+     "name": "簡詩育",
+     "salary": 50000
+    },
+    {
+     "name": "王家裕",
+     "salary": 48000
+    },
+    {
+     "name": "張美菲",
+     "salary": 45000
+    },
+    {
+     "name": "Becky",
+     "salary": 40000
+    },
+    {
+     "name": "古翊良",
+     "salary": 45000
+    },
+    {
+     "name": "張維昇",
+     "salary": 50000
+    },
+    {
+     "name": "簡宏典",
+     "salary": 40000
+    },
+    {
+     "name": "洪于妮",
+     "salary": 38000
+    },
+    {
+     "name": "簡承樑",
+     "salary": 18000
+    },
+    {
+     "name": "莊子慶",
+     "salary": 53000
+    },
+    {
+     "name": "小林",
+     "salary": 50000
+    },
+    {
+     "name": "陳志超",
+     "salary": 50000
+    },
+    {
+     "name": "阿畢",
+     "salary": 16306
+    },
+    {
+     "name": "紅翠",
+     "salary": 20889
+    }
+   ],
+   "suppliers": [
+    {
+     "name": "程農",
+     "amount": 312670
+    },
+    {
+     "name": "曾記",
+     "amount": 164458
+    },
+    {
+     "name": "夏龍",
+     "amount": 64300
+    },
+    {
+     "name": "西螺-洋蔥",
+     "amount": 28640
+    },
+    {
+     "name": "崙背",
+     "amount": 153340
+    },
+    {
+     "name": "水果",
+     "amount": 0
+    },
+    {
+     "name": "有機菜",
+     "amount": 0
+    },
+    {
+     "name": "小瓊",
+     "amount": 180319
+    },
+    {
+     "name": "林得記紅蘿蔔",
+     "amount": 6600
+    },
+    {
+     "name": "三崧",
+     "amount": 41460
+    },
+    {
+     "name": "日豪",
+     "amount": 0
+    },
+    {
+     "name": "可可可",
+     "amount": 0
+    },
+    {
+     "name": "富帆",
+     "amount": 0
+    },
+    {
+     "name": "開元",
+     "amount": 0
+    },
+    {
+     "name": "山多利玉米筍",
+     "amount": 55472
+    },
+    {
+     "name": "大成雞蛋",
+     "amount": 18480
+    },
+    {
+     "name": "冷凍青花-曲成",
+     "amount": 0
+    },
+    {
+     "name": "毛豆仁",
+     "amount": 0
+    },
+    {
+     "name": "舒可泰",
+     "amount": 1540
+    },
+    {
+     "name": "大漢板豆腐",
+     "amount": 0
+    },
+    {
+     "name": "番蛙",
+     "amount": 0
+    },
+    {
+     "name": "檸檬",
+     "amount": 0
+    },
+    {
+     "name": "黑橋牌",
+     "amount": 118677
+    },
+    {
+     "name": "家樂福",
+     "amount": 18677
+    },
+    {
+     "name": "北農拍買",
+     "amount": 179160
+    }
+   ]
+  },
+  {
+   "year": 2026,
+   "month": 3,
+   "revenueActual": 4000000,
+   "revenueFaceVal": 3874084,
+   "revenueBudget": 4500000,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入(現金)",
+     "amount": 4000000,
+     "note": "本期回收1月份貨款"
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "市場-小哥",
+     "amount": 1142112,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "南部-承樑",
+     "amount": 55000,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "貨主-詩育",
+     "amount": 1229795,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 54414,
+     "note": "3號"
+    },
+    {
+     "category": "FIXED",
+     "label": "賓士",
+     "amount": 37130,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "裕隆-5381",
+     "amount": 7104,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "小車-3875",
+     "amount": 11413,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "房租",
+     "amount": 65000,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀循環息",
+     "amount": 9542,
+     "note": "7號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸-9983",
+     "amount": 16985,
+     "note": "9號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車",
+     "amount": 37400,
+     "note": "13號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企貸款",
+     "amount": 5133,
+     "note": "23號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企青創",
+     "amount": 17657,
+     "note": "25號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車_6687",
+     "amount": 16800,
+     "note": "1號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸6738",
+     "amount": 29980,
+     "note": "15號"
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_一銀",
+     "amount": 150000,
+     "note": "3號"
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 627694,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "勞健保費用",
+     "amount": 61226,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_中和_早餐",
+     "amount": 25220,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_市場_早餐",
+     "amount": 2965,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "中區支出",
+     "amount": 25930,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "油資",
+     "amount": 33929,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "雜項",
+     "amount": 1400,
+     "note": "濾芯"
+    },
+    {
+     "category": "OPERATING",
+     "label": "電信費用(公司電信)",
+     "amount": 1199,
+     "note": "（含網路、監視器費用）"
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電費用",
+     "amount": 500,
+     "note": "中和水費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "停車費",
+     "amount": 14780,
+     "note": "市場"
+    },
+    {
+     "category": "OPERATING",
+     "label": "稅額_牌照稅",
+     "amount": 20230,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金& 水電費-市場",
+     "amount": 13276,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "市場物管",
+     "amount": 7368,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "刀片+磨刀",
+     "amount": 8000,
+     "note": ""
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "小哥（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "詩育（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    }
+   ],
+   "employees": [
+    {
+     "name": "簡千富",
+     "salary": 50000
+    },
+    {
+     "name": "簡詩育",
+     "salary": 50000
+    },
+    {
+     "name": "王家裕",
+     "salary": 48000
+    },
+    {
+     "name": "張美菲",
+     "salary": 45000
+    },
+    {
+     "name": "Becky",
+     "salary": 40000
+    },
+    {
+     "name": "古翊良",
+     "salary": 45000
+    },
+    {
+     "name": "張維昇",
+     "salary": 50000
+    },
+    {
+     "name": "簡宏典",
+     "salary": 40000
+    },
+    {
+     "name": "洪于妮",
+     "salary": 35186
+    },
+    {
+     "name": "簡承樑",
+     "salary": 18000
+    },
+    {
+     "name": "莊子慶",
+     "salary": 53000
+    },
+    {
+     "name": "小林",
+     "salary": 50000
+    },
+    {
+     "name": "陳志超",
+     "salary": 50000
+    },
+    {
+     "name": "阿畢",
+     "salary": 25663
+    },
+    {
+     "name": "紅翠",
+     "salary": 26045
+    }
+   ],
+   "suppliers": [
+    {
+     "name": "程農",
+     "amount": 224910
+    },
+    {
+     "name": "曾記",
+     "amount": 112290
+    },
+    {
+     "name": "夏龍",
+     "amount": 74200
+    },
+    {
+     "name": "西螺-洋蔥",
+     "amount": 53810
+    },
+    {
+     "name": "崙背",
+     "amount": 162590
+    },
+    {
+     "name": "水果",
+     "amount": 0
+    },
+    {
+     "name": "有機菜",
+     "amount": 0
+    },
+    {
+     "name": "小瓊",
+     "amount": 126884
+    },
+    {
+     "name": "林得記紅蘿蔔",
+     "amount": 14400
+    },
+    {
+     "name": "三崧",
+     "amount": 37670
+    },
+    {
+     "name": "日豪",
+     "amount": 79740
+    },
+    {
+     "name": "可可可",
+     "amount": 0
+    },
+    {
+     "name": "富帆",
+     "amount": 0
+    },
+    {
+     "name": "開元",
+     "amount": 6870
+    },
+    {
+     "name": "山多利玉米筍",
+     "amount": 53692
+    },
+    {
+     "name": "雞蛋-展群",
+     "amount": 43380
+    },
+    {
+     "name": "冷凍青花-曲成",
+     "amount": 0
+    },
+    {
+     "name": "毛豆仁",
+     "amount": 0
+    },
+    {
+     "name": "舒可泰",
+     "amount": 0
+    },
+    {
+     "name": "大漢板豆腐",
+     "amount": 0
+    },
+    {
+     "name": "番蛙",
+     "amount": 0
+    },
+    {
+     "name": "檸檬",
+     "amount": 0
+    },
+    {
+     "name": "黑橋牌",
+     "amount": 0
+    },
+    {
+     "name": "家樂福",
+     "amount": 50784
+    },
+    {
+     "name": "北農拍買",
+     "amount": 188575
+    }
+   ]
+  },
+  {
+   "year": 2026,
+   "month": 4,
+   "revenueActual": 4000000,
+   "revenueFaceVal": 4850000,
+   "revenueBudget": 4500000,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入(現金)",
+     "amount": 4000000,
+     "note": "本期回收1月份貨款"
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "市場-小哥",
+     "amount": 1406449,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "南部-承樑",
+     "amount": 115000,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "貨主-詩育",
+     "amount": 1604827,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 54414,
+     "note": "3號"
+    },
+    {
+     "category": "FIXED",
+     "label": "賓士",
+     "amount": 37130,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "裕隆-5381",
+     "amount": 7104,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "小車-3875",
+     "amount": 11413,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "房租",
+     "amount": 65000,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀循環息",
+     "amount": 9542,
+     "note": "7號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸-9983",
+     "amount": 16985,
+     "note": "9號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車",
+     "amount": 37400,
+     "note": "13號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企貸款",
+     "amount": 86998,
+     "note": "23號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企青創",
+     "amount": 17657,
+     "note": "25號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車_6687",
+     "amount": 16800,
+     "note": "1號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸6738",
+     "amount": 29980,
+     "note": "15號"
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_一銀",
+     "amount": 150000,
+     "note": "3號"
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 669806,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "勞健保費用",
+     "amount": 61226,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_中和_早餐",
+     "amount": 34190,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_市場_早餐",
+     "amount": 1815,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "104(一季)",
+     "amount": 8800,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "中區支出",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "油資",
+     "amount": 34854,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "電信費用(公司電信)",
+     "amount": 1199,
+     "note": "（含網路、監視器費用）"
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電費用",
+     "amount": 500,
+     "note": "中和水費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "停車費",
+     "amount": 8530,
+     "note": "市場"
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金& 水電費-市場",
+     "amount": 7333,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "郵電費-市場(中華)",
+     "amount": 3483,
+     "note": "電話+網路費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "磅秤",
+     "amount": 5000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "衛星犬",
+     "amount": 47040,
+     "note": ""
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "小哥（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "詩育（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    }
+   ],
+   "employees": [
+    {
+     "name": "簡千富",
+     "salary": 50000
+    },
+    {
+     "name": "簡詩育",
+     "salary": 50000
+    },
+    {
+     "name": "王家裕",
+     "salary": 48000
+    },
+    {
+     "name": "張美菲",
+     "salary": 45000
+    },
+    {
+     "name": "Becky",
+     "salary": 40000
+    },
+    {
+     "name": "古翊良",
+     "salary": 45000
+    },
+    {
+     "name": "張維昇",
+     "salary": 60000
+    },
+    {
+     "name": "簡宏典",
+     "salary": 40000
+    },
+    {
+     "name": "簡承樑",
+     "salary": 18000
+    },
+    {
+     "name": "莊子慶",
+     "salary": 53000
+    },
+    {
+     "name": "小林",
+     "salary": 50000
+    },
+    {
+     "name": "陳志超",
+     "salary": 48333
+    },
+    {
+     "name": "阿畢",
+     "salary": 25458
+    },
+    {
+     "name": "阿秋",
+     "salary": 24464
+    },
+    {
+     "name": "阿長",
+     "salary": 27353
+    },
+    {
+     "name": "秋草",
+     "salary": 20198
+    },
+    {
+     "name": "楊武雄",
+     "salary": 25000
+    }
+   ],
+   "suppliers": [
+    {
+     "name": "程農",
+     "amount": 310080
+    },
+    {
+     "name": "曾記",
+     "amount": 73372
+    },
+    {
+     "name": "夏龍",
+     "amount": 78500
+    },
+    {
+     "name": "西螺-洋蔥",
+     "amount": 52320
+    },
+    {
+     "name": "崙背",
+     "amount": 246100
+    },
+    {
+     "name": "水果",
+     "amount": 0
+    },
+    {
+     "name": "有機菜",
+     "amount": 0
+    },
+    {
+     "name": "小瓊",
+     "amount": 138438
+    },
+    {
+     "name": "林得記紅蘿蔔",
+     "amount": 15200
+    },
+    {
+     "name": "三崧",
+     "amount": 81880
+    },
+    {
+     "name": "日豪",
+     "amount": 96930
+    },
+    {
+     "name": "可可可",
+     "amount": 0
+    },
+    {
+     "name": "富帆",
+     "amount": 0
+    },
+    {
+     "name": "開元",
+     "amount": 21560
+    },
+    {
+     "name": "山多利玉米筍",
+     "amount": 56770
+    },
+    {
+     "name": "雞蛋-展群",
+     "amount": 43380
+    },
+    {
+     "name": "冷凍青花-曲成",
+     "amount": 0
+    },
+    {
+     "name": "毛豆仁",
+     "amount": 0
+    },
+    {
+     "name": "舒可泰",
+     "amount": 0
+    },
+    {
+     "name": "大漢板豆腐",
+     "amount": 0
+    },
+    {
+     "name": "番蛙",
+     "amount": 0
+    },
+    {
+     "name": "檸檬",
+     "amount": 0
+    },
+    {
+     "name": "黑橋牌",
+     "amount": 0
+    },
+    {
+     "name": "家樂福",
+     "amount": 47231
+    },
+    {
+     "name": "北農拍買",
+     "amount": 165302
+    },
+    {
+     "name": "展盈",
+     "amount": 460
+    },
+    {
+     "name": "萬圃菇類",
+     "amount": 76647
+    },
+    {
+     "name": "騰先",
+     "amount": 25000
+    },
+    {
+     "name": "大家發",
+     "amount": 36807
+    },
+    {
+     "name": "好事多",
+     "amount": 38850
+    }
+   ]
+  },
+  {
+   "year": 2026,
+   "month": 5,
+   "revenueActual": 3874084,
+   "revenueFaceVal": 5958343,
+   "revenueBudget": 4500000,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入(現金)",
+     "amount": 3874084,
+     "note": "本期回收1月份貨款"
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "市場-小哥",
+     "amount": 1365056,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "南部-承樑",
+     "amount": 160000,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "貨主-詩育",
+     "amount": 1983070,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀貸款",
+     "amount": 54414,
+     "note": "3號"
+    },
+    {
+     "category": "FIXED",
+     "label": "賓士",
+     "amount": 37130,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "裕隆-5381",
+     "amount": 7104,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "房租",
+     "amount": 65000,
+     "note": "5號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育一銀循環息",
+     "amount": 9542,
+     "note": "7號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸-9983",
+     "amount": 16985,
+     "note": "9號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車",
+     "amount": 37400,
+     "note": "13號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企貸款",
+     "amount": 86998,
+     "note": "23號"
+    },
+    {
+     "category": "FIXED",
+     "label": "富育台企青創",
+     "amount": 17657,
+     "note": "25號"
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_租賃車_6687",
+     "amount": 16800,
+     "note": "1號"
+    },
+    {
+     "category": "FIXED",
+     "label": "車貸6738",
+     "amount": 29980,
+     "note": "15號"
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_一銀",
+     "amount": 150000,
+     "note": "3號"
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 714146,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "勞健保費用",
+     "amount": 61226,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_中和_早餐",
+     "amount": 32500,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_市場_早餐",
+     "amount": 3385,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "104(一季)",
+     "amount": 8800,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "中區支出",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "油資",
+     "amount": 42159,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "電信費用(公司電信)",
+     "amount": 1199,
+     "note": "（含網路、監視器費用）"
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電費用",
+     "amount": 500,
+     "note": "中和水費"
+    },
+    {
+     "category": "OPERATING",
+     "label": "停車費",
+     "amount": 4185,
+     "note": "市場"
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金& 水電費-市場",
+     "amount": 15401,
+     "note": "物管7382；電費8019"
+    },
+    {
+     "category": "OPERATING",
+     "label": "租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "結清3875貸款",
+     "amount": 211355,
+     "note": ""
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "小哥（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    },
+    {
+     "category": "SHAREHOLDER",
+     "label": "詩育（提撥）",
+     "amount": 100000,
+     "note": "固定提撥"
+    }
+   ],
+   "employees": [
+    {
+     "name": "簡千富",
+     "salary": 50000
+    },
+    {
+     "name": "簡詩育",
+     "salary": 50000
+    },
+    {
+     "name": "王家裕",
+     "salary": 48000
+    },
+    {
+     "name": "張美菲",
+     "salary": 45000
+    },
+    {
+     "name": "Becky",
+     "salary": 40000
+    },
+    {
+     "name": "古翊良",
+     "salary": 45000
+    },
+    {
+     "name": "張維昇",
+     "salary": 60000
+    },
+    {
+     "name": "簡宏典",
+     "salary": 40000
+    },
+    {
+     "name": "簡承樑",
+     "salary": 18000
+    },
+    {
+     "name": "莊子慶",
+     "salary": 53000
+    },
+    {
+     "name": "小林",
+     "salary": 50000
+    },
+    {
+     "name": "陳志超",
+     "salary": 48333
+    },
+    {
+     "name": "阿畢",
+     "salary": 32952
+    },
+    {
+     "name": "黃氏萍",
+     "salary": 20654
+    },
+    {
+     "name": "阿秋",
+     "salary": 29190
+    },
+    {
+     "name": "阿長",
+     "salary": 34017
+    },
+    {
+     "name": "楊武雄",
+     "salary": 50000
+    }
+   ],
+   "suppliers": [
+    {
+     "name": "程農",
+     "amount": 542120
+    },
+    {
+     "name": "曾記",
+     "amount": 99699
+    },
+    {
+     "name": "夏龍",
+     "amount": 99200
+    },
+    {
+     "name": "西螺-洋蔥",
+     "amount": 53640
+    },
+    {
+     "name": "崙背",
+     "amount": 238840
+    },
+    {
+     "name": "水果",
+     "amount": 0
+    },
+    {
+     "name": "有機菜",
+     "amount": 1350
+    },
+    {
+     "name": "小瓊",
+     "amount": 178077
+    },
+    {
+     "name": "林得記紅蘿蔔",
+     "amount": 5280
+    },
+    {
+     "name": "三崧",
+     "amount": 104730
+    },
+    {
+     "name": "日豪",
+     "amount": 7310
+    },
+    {
+     "name": "可可可",
+     "amount": 0
+    },
+    {
+     "name": "富帆",
+     "amount": 1600
+    },
+    {
+     "name": "開元",
+     "amount": 0
+    },
+    {
+     "name": "山多利玉米筍",
+     "amount": 73656
+    },
+    {
+     "name": "雞蛋-展群",
+     "amount": 50000
+    },
+    {
+     "name": "冷凍青花-曲成",
+     "amount": 0
+    },
+    {
+     "name": "毛豆仁",
+     "amount": 0
+    },
+    {
+     "name": "舒可泰",
+     "amount": 4585
+    },
+    {
+     "name": "大漢板豆腐",
+     "amount": 0
+    },
+    {
+     "name": "番蛙",
+     "amount": 0
+    },
+    {
+     "name": "檸檬",
+     "amount": 0
+    },
+    {
+     "name": "黑橋牌",
+     "amount": 0
+    },
+    {
+     "name": "家樂福",
+     "amount": 34550
+    },
+    {
+     "name": "北農拍買",
+     "amount": 369823
+    },
+    {
+     "name": "展盈",
+     "amount": 0
+    },
+    {
+     "name": "萬圃菇類",
+     "amount": 118610
+    },
+    {
+     "name": "騰先",
+     "amount": 0
+    },
+    {
+     "name": "大家發",
+     "amount": 0
+    },
+    {
+     "name": "好事多",
+     "amount": 0
+    }
+   ]
+  }
+ ],
+ "months2025": [
+  {
+   "year": 2025,
+   "month": 2,
+   "revenueActual": 2399927,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 2399927,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 1407118,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 338000,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他費用",
+     "amount": 277886,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 71997.81,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 3,
+   "revenueActual": 2292155,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 2292155,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 1308326,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 386115,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 18750,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 20000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 4165,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 77204,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 129833,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_中和",
+     "amount": 10519,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 34718,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_千富",
+     "amount": 9090,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 25719,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 68764.65,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_警友會",
+     "amount": 60000,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 4,
+   "revenueActual": 2380300,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 2380300,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 1362484,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 514610,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 18750,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 9406,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 3195,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_修繕費_賓士_6836",
+     "amount": 12000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 129833,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 28422,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 22450,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "稅額_牌照稅",
+     "amount": 23200,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 71409,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 5,
+   "revenueActual": 3513399,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 3513399,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 1966342,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 462281,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資_獎金",
+     "amount": 80000,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 23740,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 15139,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 4815,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_保養費",
+     "amount": 27100,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 129833,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 8200,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 50579,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 22620,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 105401.97,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 6,
+   "revenueActual": 2847233,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 2847233,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 1673961,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 489747,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 19570,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 8646,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 1085,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_保養費",
+     "amount": 2600,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 10325,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 55114,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 17388,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 85416.98999999999,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 7,
+   "revenueActual": 3312347,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 3312347,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 2247878,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 521308,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 19650,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 5920,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 5920,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 10810,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 80562,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 21992,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他費用",
+     "amount": 920,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 99370.41,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 8,
+   "revenueActual": 4802425,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 4802425,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 3179817,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 558483,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 23455,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 14505,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 6765,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-6687",
+     "amount": 26000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 19747,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 83663,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_千富",
+     "amount": 20952,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 18358,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 135870,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 9,
+   "revenueActual": 4690066,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 4690066,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 2944734,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 591983,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資_獎金",
+     "amount": 45000,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 21960,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 9416,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 5245,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-6687",
+     "amount": 16800,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 10924,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 127790,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_千富",
+     "amount": 6313,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 15550,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他費用",
+     "amount": 20567,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 118949,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 10,
+   "revenueActual": 4892973,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 4892973,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 3309908,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 610528,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 24535,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_辦公室",
+     "amount": 30000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 15298,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 6941,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_車輛_賓士_6738",
+     "amount": 29980,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-6687",
+     "amount": 16800,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 190000,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "水電瓦斯費_市場",
+     "amount": 10891,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 65100,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_千富",
+     "amount": 17959,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 13479,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "稅額_牌照稅",
+     "amount": 10740,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 126004,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 11,
+   "revenueActual": 4723197,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 4723197,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 3148340,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 691523,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 27680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_攤位_市場",
+     "amount": 20407,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 26225,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_過路費",
+     "amount": 300,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 13020,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_車輛_賓士_6738",
+     "amount": 29980,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-6687",
+     "amount": 16800,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_保養費",
+     "amount": 25500,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 50000,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 198842,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_千富",
+     "amount": 27074,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 10581,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 141695.91,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  },
+  {
+   "year": 2025,
+   "month": 12,
+   "revenueActual": 5142069,
+   "revenueFaceVal": 0,
+   "revenueBudget": 0,
+   "lineItems": [
+    {
+     "category": "REVENUE",
+     "label": "營業收入",
+     "amount": 5142069,
+     "note": ""
+    },
+    {
+     "category": "PROCUREMENT",
+     "label": "銷貨成本",
+     "amount": 3264201,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "薪資費用",
+     "amount": 628528,
+     "note": ""
+    },
+    {
+     "category": "PAYROLL",
+     "label": "職工福利_早餐",
+     "amount": 28485,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_房租_中和",
+     "amount": 60500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "租金_攤位_市場",
+     "amount": 15123,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_加油費",
+     "amount": 28993,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_停車費_市場",
+     "amount": 8896,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_中區",
+     "amount": 14680,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_貸款_賓士_6836",
+     "amount": 37130,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_車輛_賓士_6738",
+     "amount": 29980,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_裕隆-5381",
+     "amount": 7104,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_小車-3875",
+     "amount": 11413,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-9983",
+     "amount": 16985,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "車輛_租金_租賃車-6687",
+     "amount": 16800,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "車輛_保養費",
+     "amount": 8150,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "行政_租金_影印機",
+     "amount": 2500,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_富育",
+     "amount": 86746,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "貸款_帝利",
+     "amount": 72921,
+     "note": ""
+    },
+    {
+     "category": "FIXED",
+     "label": "凍庫建置費用_分期",
+     "amount": 11250,
+     "note": ""
+    },
+    {
+     "category": "OPERATING",
+     "label": "公司信用卡_詩育",
+     "amount": 198842,
+     "note": ""
+    },
+    {
+     "category": "CENTRAL",
+     "label": "公司信用卡_中區",
+     "amount": 12181,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他費用",
+     "amount": 39035,
+     "note": ""
+    },
+    {
+     "category": "NON_OPERATING",
+     "label": "其他_股東分潤_王哥",
+     "amount": 154262.07,
+     "note": ""
+    }
+   ],
+   "employees": [],
+   "suppliers": []
+  }
+ ],
+ "employees": [
+  {
+   "name": "簡千富",
+   "type": "FULLTIME",
+   "salary": 50000
+  },
+  {
+   "name": "簡詩育",
+   "type": "FULLTIME",
+   "salary": 50000
+  },
+  {
+   "name": "王家裕",
+   "type": "FULLTIME",
+   "salary": 48000
+  },
+  {
+   "name": "張美菲",
+   "type": "FULLTIME",
+   "salary": 45000
+  },
+  {
+   "name": "Becky",
+   "type": "FULLTIME",
+   "salary": 40000
+  },
+  {
+   "name": "古翊良",
+   "type": "FULLTIME",
+   "salary": 45000
+  },
+  {
+   "name": "張維昇",
+   "type": "FULLTIME",
+   "salary": 60000
+  },
+  {
+   "name": "簡宏典",
+   "type": "FULLTIME",
+   "salary": 40000
+  },
+  {
+   "name": "洪于妮",
+   "type": "FULLTIME",
+   "salary": 35186
+  },
+  {
+   "name": "簡承樑",
+   "type": "FULLTIME",
+   "salary": 18000
+  },
+  {
+   "name": "莊子慶",
+   "type": "FULLTIME",
+   "salary": 53000
+  },
+  {
+   "name": "小林",
+   "type": "FULLTIME",
+   "salary": 50000
+  },
+  {
+   "name": "陳志超",
+   "type": "FULLTIME",
+   "salary": 48333
+  },
+  {
+   "name": "阿畢",
+   "type": "FULLTIME",
+   "salary": 32952
+  },
+  {
+   "name": "紅翠",
+   "type": "FULLTIME",
+   "salary": 26045
+  },
+  {
+   "name": "阿秋",
+   "type": "FULLTIME",
+   "salary": 29190
+  },
+  {
+   "name": "阿長",
+   "type": "FULLTIME",
+   "salary": 34017
+  },
+  {
+   "name": "秋草",
+   "type": "FULLTIME",
+   "salary": 20198
+  },
+  {
+   "name": "楊武雄",
+   "type": "FULLTIME",
+   "salary": 50000
+  },
+  {
+   "name": "黃氏萍",
+   "type": "FULLTIME",
+   "salary": 20654
+  }
+ ],
+ "annual2025": [
+  {
+   "subject": "營業收入",
+   "months": [
+    0,
+    2399927,
+    2292155,
+    2380300,
+    3513399,
+    2847233,
+    3312347,
+    4802425,
+    4690066,
+    4892973,
+    4723197,
+    5142069
+   ],
+   "total": 40996091,
+   "isSubtotal": false,
+   "sortOrder": 0
+  },
+  {
+   "subject": "減：銷貨成本 (Cost of Goods Sold)",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4368795,
+    0,
+    0,
+    0
+   ],
+   "total": 4368795,
+   "isSubtotal": false,
+   "sortOrder": 1
+  },
+  {
+   "subject": "銷貨成本",
+   "months": [
+    0,
+    1407118,
+    1308326,
+    1362484,
+    1966342,
+    1673961,
+    2247878,
+    3179817,
+    2944734,
+    3309908,
+    3148340,
+    3264201
+   ],
+   "total": 25813109,
+   "isSubtotal": false,
+   "sortOrder": 2
+  },
+  {
+   "subject": "營業毛利 (Gross Profit)",
+   "months": [
+    0,
+    992809,
+    983829,
+    1017816,
+    1547057,
+    1173272,
+    1064469,
+    1622608,
+    1745332,
+    1583065,
+    1574857,
+    1877868
+   ],
+   "total": 15182982,
+   "isSubtotal": true,
+   "sortOrder": 3
+  },
+  {
+   "subject": "營業毛利率 (Gross Profit Margin)",
+   "months": [
+    0,
+    0.4136829995245689,
+    0.42921573802818747,
+    0.42759988236776875,
+    0.44033057446649243,
+    0.4120744596596064,
+    0.3213639754530549,
+    0.33787263726138356,
+    0.37213378233909716,
+    0.323538470373738,
+    0.3334303015521055,
+    0.3651969664351062
+   ],
+   "total": 0.37035194404266497,
+   "isSubtotal": true,
+   "sortOrder": 4
+  },
+  {
+   "subject": "減：營業費用 (Operating Expenses)",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 0,
+   "isSubtotal": false,
+   "sortOrder": 5
+  },
+  {
+   "subject": "薪資費用",
+   "months": [
+    0,
+    338000,
+    386115,
+    514610,
+    462281,
+    489747,
+    521308,
+    558483,
+    591983,
+    610528,
+    691523,
+    628528
+   ],
+   "total": 5793106,
+   "isSubtotal": false,
+   "sortOrder": 6
+  },
+  {
+   "subject": "薪資_獎金",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    80000,
+    0,
+    0,
+    0,
+    45000,
+    0,
+    0,
+    0
+   ],
+   "total": 125000,
+   "isSubtotal": false,
+   "sortOrder": 7
+  },
+  {
+   "subject": "職工福利_早餐",
+   "months": [
+    0,
+    0,
+    18750,
+    18750,
+    23740,
+    19570,
+    19650,
+    23455,
+    21960,
+    24535,
+    27680,
+    28485
+   ],
+   "total": 226575,
+   "isSubtotal": false,
+   "sortOrder": 8
+  },
+  {
+   "subject": "職工福利_聚餐",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 0,
+   "isSubtotal": false,
+   "sortOrder": 9
+  },
+  {
+   "subject": "租金_房租_中和",
+   "months": [
+    0,
+    0,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500,
+    60500
+   ],
+   "total": 605000,
+   "isSubtotal": false,
+   "sortOrder": 10
+  },
+  {
+   "subject": "租金_房租_辦公室",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    30000,
+    0,
+    0
+   ],
+   "total": 30000,
+   "isSubtotal": false,
+   "sortOrder": 11
+  },
+  {
+   "subject": "租金_攤位_市場",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    20407,
+    15123
+   ],
+   "total": 35530,
+   "isSubtotal": false,
+   "sortOrder": 12
+  },
+  {
+   "subject": "保證金_中和212",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    10000,
+    0,
+    0
+   ],
+   "total": 10000,
+   "isSubtotal": false,
+   "sortOrder": 13
+  },
+  {
+   "subject": "保證金_辦公室",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    60000,
+    0,
+    0
+   ],
+   "total": 60000,
+   "isSubtotal": false,
+   "sortOrder": 14
+  },
+  {
+   "subject": "車輛_加油費",
+   "months": [
+    0,
+    0,
+    20000,
+    9406,
+    15139,
+    8646,
+    5920,
+    14505,
+    9416,
+    15298,
+    26225,
+    28993
+   ],
+   "total": 153548,
+   "isSubtotal": false,
+   "sortOrder": 15
+  },
+  {
+   "subject": "車輛_過路費",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    300,
+    0
+   ],
+   "total": 300,
+   "isSubtotal": false,
+   "sortOrder": 16
+  },
+  {
+   "subject": "車輛_停車費_市場",
+   "months": [
+    0,
+    0,
+    4165,
+    3195,
+    4815,
+    1085,
+    5920,
+    6765,
+    5245,
+    6941,
+    13020,
+    8896
+   ],
+   "total": 60047,
+   "isSubtotal": false,
+   "sortOrder": 17
+  },
+  {
+   "subject": "車輛_貸款_中區",
+   "months": [
+    0,
+    0,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680,
+    14680
+   ],
+   "total": 146800,
+   "isSubtotal": false,
+   "sortOrder": 18
+  },
+  {
+   "subject": "車輛_貸款_賓士_6836",
+   "months": [
+    0,
+    0,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130,
+    37130
+   ],
+   "total": 371300,
+   "isSubtotal": false,
+   "sortOrder": 19
+  },
+  {
+   "subject": "貸款_車輛_賓士_6738",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    29980,
+    29980,
+    29980
+   ],
+   "total": 89940,
+   "isSubtotal": false,
+   "sortOrder": 20
+  },
+  {
+   "subject": "車輛_租金_裕隆-5381",
+   "months": [
+    0,
+    0,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104,
+    7104
+   ],
+   "total": 71040,
+   "isSubtotal": false,
+   "sortOrder": 21
+  },
+  {
+   "subject": "車輛_租金_小車-3875",
+   "months": [
+    0,
+    0,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413,
+    11413
+   ],
+   "total": 114130,
+   "isSubtotal": false,
+   "sortOrder": 22
+  },
+  {
+   "subject": "車輛_租金_租賃車-9983",
+   "months": [
+    0,
+    0,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985,
+    16985
+   ],
+   "total": 169850,
+   "isSubtotal": false,
+   "sortOrder": 23
+  },
+  {
+   "subject": "車輛_租金_租賃車-6687",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    26000,
+    16800,
+    16800,
+    16800,
+    16800
+   ],
+   "total": 93200,
+   "isSubtotal": false,
+   "sortOrder": 24
+  },
+  {
+   "subject": "車輛_保養費",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    27100,
+    2600,
+    0,
+    0,
+    0,
+    0,
+    25500,
+    8150
+   ],
+   "total": 63350,
+   "isSubtotal": false,
+   "sortOrder": 25
+  },
+  {
+   "subject": "車輛_修繕費_賓士_6836",
+   "months": [
+    0,
+    0,
+    0,
+    12000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 12000,
+   "isSubtotal": false,
+   "sortOrder": 26
+  },
+  {
+   "subject": "行政_租金_影印機",
+   "months": [
+    0,
+    0,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500,
+    2500
+   ],
+   "total": 25000,
+   "isSubtotal": false,
+   "sortOrder": 27
+  },
+  {
+   "subject": "貸款_富育",
+   "months": [
+    0,
+    0,
+    77204,
+    86746,
+    86746,
+    86746,
+    86746,
+    86746,
+    86746,
+    86746,
+    86746,
+    86746
+   ],
+   "total": 857918,
+   "isSubtotal": false,
+   "sortOrder": 28
+  },
+  {
+   "subject": "貸款_帝利",
+   "months": [
+    0,
+    0,
+    129833,
+    129833,
+    129833,
+    0,
+    0,
+    0,
+    0,
+    190000,
+    50000,
+    72921
+   ],
+   "total": 702420,
+   "isSubtotal": false,
+   "sortOrder": 29
+  },
+  {
+   "subject": "水電瓦斯費_中和",
+   "months": [
+    0,
+    0,
+    10519,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 10519,
+   "isSubtotal": false,
+   "sortOrder": 30
+  },
+  {
+   "subject": "水電瓦斯費_市場",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    8200,
+    10325,
+    10810,
+    19747,
+    10924,
+    10891,
+    0,
+    0
+   ],
+   "total": 70897,
+   "isSubtotal": false,
+   "sortOrder": 31
+  },
+  {
+   "subject": "凍庫建置費用_分期",
+   "months": [
+    0,
+    0,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250,
+    11250
+   ],
+   "total": 112500,
+   "isSubtotal": false,
+   "sortOrder": 32
+  },
+  {
+   "subject": "公司信用卡_詩育",
+   "months": [
+    0,
+    0,
+    34718,
+    28422,
+    50579,
+    55114,
+    80562,
+    83663,
+    127790,
+    65100,
+    198842,
+    198842
+   ],
+   "total": 923632,
+   "isSubtotal": false,
+   "sortOrder": 33
+  },
+  {
+   "subject": "公司信用卡_千富",
+   "months": [
+    0,
+    0,
+    9090,
+    0,
+    0,
+    0,
+    0,
+    20952,
+    6313,
+    17959,
+    27074,
+    0
+   ],
+   "total": 81388,
+   "isSubtotal": false,
+   "sortOrder": 34
+  },
+  {
+   "subject": "公司信用卡_中區",
+   "months": [
+    0,
+    0,
+    25719,
+    22450,
+    22620,
+    17388,
+    21992,
+    18358,
+    15550,
+    13479,
+    10581,
+    12181
+   ],
+   "total": 180318,
+   "isSubtotal": false,
+   "sortOrder": 35
+  },
+  {
+   "subject": "稅額_牌照稅",
+   "months": [
+    0,
+    0,
+    0,
+    23200,
+    0,
+    0,
+    0,
+    0,
+    0,
+    10740,
+    0,
+    0
+   ],
+   "total": 33940,
+   "isSubtotal": false,
+   "sortOrder": 36
+  },
+  {
+   "subject": "其他費用",
+   "months": [
+    0,
+    277886,
+    0,
+    0,
+    0,
+    0,
+    920,
+    0,
+    20567,
+    0,
+    0,
+    39035
+   ],
+   "total": 338408,
+   "isSubtotal": false,
+   "sortOrder": 37
+  },
+  {
+   "subject": "營業費用合計",
+   "months": [
+    0,
+    615886,
+    877675,
+    1010174,
+    1072615,
+    852783,
+    915390,
+    1020236,
+    1119856,
+    1360559,
+    1386240,
+    1336242
+   ],
+   "total": 11567656,
+   "isSubtotal": true,
+   "sortOrder": 38
+  },
+  {
+   "subject": "營業淨利 (Operating Income)",
+   "months": [
+    0,
+    376923,
+    106154,
+    7642,
+    474442,
+    320489,
+    149079,
+    602372,
+    625476,
+    222506,
+    188617,
+    541626
+   ],
+   "total": 3615326,
+   "isSubtotal": true,
+   "sortOrder": 39
+  },
+  {
+   "subject": "減：營業外支出 (Non-Operating)",
+   "months": [
+    0,
+    71997.81,
+    128764.65,
+    71409,
+    105401.97,
+    85416.98999999999,
+    99370.41,
+    135870,
+    118949,
+    126004,
+    141695.91,
+    154262.07
+   ],
+   "total": 1239141.81,
+   "isSubtotal": false,
+   "sortOrder": 40
+  },
+  {
+   "subject": "利息支出",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 0,
+   "isSubtotal": false,
+   "sortOrder": 41
+  },
+  {
+   "subject": "其他_股東分潤_王哥",
+   "months": [
+    0,
+    71997.81,
+    68764.65,
+    71409,
+    105401.97,
+    85416.98999999999,
+    99370.41,
+    135870,
+    118949,
+    126004,
+    141695.91,
+    154262.07
+   ],
+   "total": 1179141.81,
+   "isSubtotal": false,
+   "sortOrder": 42
+  },
+  {
+   "subject": "其他_警友會",
+   "months": [
+    0,
+    0,
+    60000,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 60000,
+   "isSubtotal": false,
+   "sortOrder": 43
+  },
+  {
+   "subject": "稅前淨利 (Pre-Tax Income)",
+   "months": [
+    0,
+    304925.19,
+    -22610.649999999994,
+    -63767,
+    369040.03,
+    235072.01,
+    49708.59,
+    466502,
+    506527,
+    96502,
+    46921.09,
+    387363.93
+   ],
+   "total": 2376184.19,
+   "isSubtotal": true,
+   "sortOrder": 44
+  },
+  {
+   "subject": "減：所得稅費用",
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    62543,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "total": 62543,
+   "isSubtotal": false,
+   "sortOrder": 45
+  },
+  {
+   "subject": "稅後淨利 (Net Income)",
+   "months": [
+    0,
+    304925.19,
+    -22610.649999999994,
+    -63767,
+    369040.03,
+    172529.01,
+    49708.59,
+    466502,
+    506527,
+    96502,
+    46921.09,
+    387363.93
+   ],
+   "total": 2313641.19,
+   "isSubtotal": true,
+   "sortOrder": 46
+  }
+ ]
+}

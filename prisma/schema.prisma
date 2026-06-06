@@ -1,0 +1,148 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// 所有金額欄位皆以「分」(整數, minor units) 儲存，確保財務級精確、避免浮點誤差。
+// 1 元 = 100 分。顯示與輸入時才換算成「元」。
+// ─────────────────────────────────────────────────────────────────────────
+
+// 每月損益（容器）。各分類「總額」為快取，等於該分類 LineItem 的加總；
+// payrollTotal 來自薪資模組 (PayrollEntry) 的加總。寫入明細時由 API 重算。
+model MonthlyPL {
+  id    Int @id @default(autoincrement())
+  year  Int
+  month Int
+
+  // 直接輸入欄位
+  revenueBudget  Int    @default(0) // 預算營收
+  revenueFaceVal Int    @default(0) // 帳面營業額 (Forecast)
+  bankBalance    Int    @default(0) // 月底銀行餘額
+  notes          String @default("")
+  status         String @default("") // 低於預算 / 符合預算 / 超出預算
+
+  // 分類總額快取（= 對應 LineItem 加總；payrollTotal = 薪資模組加總）
+  revenueActual    Int @default(0) // 營業收入(現金) 加總
+  procurementTotal Int @default(0) // 採購款 加總
+  payrollTotal     Int @default(0) // 人事薪資 加總（來自薪資模組）
+  fixedTotal       Int @default(0) // 每月固定支出 加總
+  operatingTotal   Int @default(0) // 營業費用 加總
+  centralTotal     Int @default(0) // 中區支出 加總
+  nonOperatingTotal Int @default(0) // 營業外費用 加總
+  shareholderTotal Int @default(0) // 股東提撥 加總
+
+  lineItems LineItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([year, month])
+}
+
+// 各分類底下的可編輯細項（含每筆備註）。category 之列舉見 lib/categories.ts。
+model LineItem {
+  id          Int       @id @default(autoincrement())
+  monthlyPLId Int
+  category    String // REVENUE / PROCUREMENT / FIXED / OPERATING / CENTRAL / NON_OPERATING / SHAREHOLDER
+  label       String // 項目名稱，例如「市場-小哥」「修繕費」
+  amountCents Int       @default(0)
+  note        String    @default("") // 細項備註：此筆費用發生的原因
+  sortOrder   Int       @default(0)
+  monthlyPL   MonthlyPL @relation(fields: [monthlyPLId], references: [id], onDelete: Cascade)
+
+  @@index([monthlyPLId, category])
+}
+
+// 月結貨主：每月可由使用者自行新增/編輯，系統加總。
+model Supplier {
+  id          Int    @id @default(autoincrement())
+  year        Int
+  month       Int
+  name        String // 貨主名稱，例如「北農拍買」
+  amountCents Int    @default(0)
+  note        String @default("")
+  sortOrder   Int    @default(0)
+
+  @@index([year, month])
+}
+
+// 員工（跨期記憶）。新增每期資料時，自動代入上一期資料供編輯。
+model Employee {
+  id                Int     @id @default(autoincrement())
+  name              String  @unique
+  type              String // FULLTIME（正職）/ PARTTIME（PT兼職）
+  defaultSalaryCents Int    @default(0) // 正職：預設月薪
+  defaultHourlyCents Int    @default(0) // 兼職：預設時薪
+  active            Boolean @default(true)
+  sortOrder         Int     @default(0)
+  createdAt         DateTime @default(now())
+
+  entries PayrollEntry[]
+}
+
+// 每期（年月）每位員工一筆薪資資料。
+model PayrollEntry {
+  id         Int    @id @default(autoincrement())
+  year       Int
+  month      Int
+  employeeId Int
+  type       String // FULLTIME / PARTTIME
+  salaryCents Int   @default(0) // 正職：本月月薪
+  hourlyCents Int   @default(0) // 兼職：本月時薪
+  note       String @default("")
+
+  employee Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  shifts   Shift[]
+
+  @@unique([year, month, employeeId])
+  @@index([year, month])
+}
+
+// 兼職每日上下班紀錄。工時 =(下班-上班-休息) 分鐘。
+model Shift {
+  id             Int    @id @default(autoincrement())
+  payrollEntryId Int
+  date           String // YYYY-MM-DD
+  startMin       Int    @default(0) // 上班：自午夜起算的分鐘
+  endMin         Int    @default(0) // 下班
+  breakMin       Int    @default(0) // 休息分鐘
+  note           String @default("")
+
+  entry PayrollEntry @relation(fields: [payrollEntryId], references: [id], onDelete: Cascade)
+
+  @@index([payrollEntryId])
+}
+
+// 年度損益表（忠實重現 Excel，例如 2025）。每列為一個會計科目，12 個月 + 年度總計。
+// isSubtotal 標記小計列（例如「營業費用合計」），呈現時不可再被加總。
+model AnnualPLLine {
+  id        Int     @id @default(autoincrement())
+  year      Int
+  section   String // 區段：REVENUE / COGS / GROSS / OPEX / OP_INCOME / NON_OP / PRETAX / TAX / NET
+  subject   String // 會計科目名稱
+  // 年度金額可達數十億分，超過 32-bit Int，改用 BigInt（仍為「分」整數）。
+  m1  BigInt @default(0)
+  m2  BigInt @default(0)
+  m3  BigInt @default(0)
+  m4  BigInt @default(0)
+  m5  BigInt @default(0)
+  m6  BigInt @default(0)
+  m7  BigInt @default(0)
+  m8  BigInt @default(0)
+  m9  BigInt @default(0)
+  m10 BigInt @default(0)
+  m11 BigInt @default(0)
+  m12 BigInt @default(0)
+  total      BigInt  @default(0)
+  isSubtotal Boolean @default(false)
+  indent     Int     @default(0) // 縮排層級（顯示用）
+  sortOrder  Int     @default(0)
+
+  @@index([year])
+}
