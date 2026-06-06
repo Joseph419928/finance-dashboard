@@ -4,7 +4,9 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+# --ignore-scripts: skip the postinstall `prisma generate` here (schema not copied yet).
+# The builder stage runs `prisma generate` explicitly after copying the schema.
+RUN npm ci --ignore-scripts
 
 FROM base AS builder
 WORKDIR /app
