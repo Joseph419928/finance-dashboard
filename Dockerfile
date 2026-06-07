@@ -37,4 +37,4 @@ COPY --from=builder /app/prisma ./prisma
 EXPOSE 3000
 
 # Sync schema, seed in the background (non-blocking), then start the Next server.
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --skip-generate --accept-data-loss && { (node prisma/seed-prod.cjs || true) & exec node_modules/next/dist/bin/next start -H 0.0.0.0 -p ${PORT:-3000}; }"]
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --skip-generate --accept-data-loss && { (node prisma/seed-prod.cjs || true) & echo '>>> starting next'; exec node node_modules/next/dist/bin/next start -H 0.0.0.0 -p ${PORT:-3000}; }"]
