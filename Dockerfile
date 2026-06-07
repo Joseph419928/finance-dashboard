@@ -46,4 +46,7 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --skip-generate --accept-data-loss && (node prisma/seed-prod.cjs || true) && node server.js"]
+# db push (blocking, ensures schema) → seed in BACKGROUND → server in foreground.
+# Backgrounding the seed guarantees the web server starts immediately even if the
+# seed is slow/blocked; Postgres handles concurrent seed + serve cleanly.
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js db push --skip-generate --accept-data-loss && { (node prisma/seed-prod.cjs || true) & node server.js; }"]
