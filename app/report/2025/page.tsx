@@ -40,7 +40,7 @@ export default async function Report2025Page() {
                   </td>
                   {months.map((v, i) => (
                     <td key={i} className="td-r text-slate-600">
-                      {isPct ? (n(v) === 0 ? '—' : `${(n(v) / 100).toFixed(1)}%`) : (n(v) === 0 ? '—' : fmtCurrency(n(v), true))}
+                      {isPct ? (n(v) === 0 ? '—' : `${(n(v) / 100).toFixed(1)}%`) : (n(v) === 0 ? '—' : fmtCurrency(n(v)))}
                     </td>
                   ))}
                   <td className={`td-r bg-slate-50/60 ${l.isSubtotal ? 'font-bold text-slate-900' : 'font-medium text-slate-700'}`}>
@@ -52,7 +52,7 @@ export default async function Report2025Page() {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-slate-400 mt-3">金額以整數「分」精確儲存，顯示時換算為元；月欄位以縮寫(K/M)呈現，年度總計為完整金額。</p>
+      <p className="text-xs text-slate-400 mt-3">金額以整數「分」精確儲存，顯示時換算為元，完整顯示不縮寫。</p>
     </div>
   )
 }
