@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { fmtCurrency } from '@/lib/formatters'
 import { toCents, toUnits } from '@/lib/money'
 import { CATEGORIES, EXPENSE_CATEGORIES, type Category } from '@/lib/categories'
+import MoneyInput from '@/components/MoneyInput'
 import type { MonthlyPL, LineItem } from '@/lib/types'
 
 interface Props {
@@ -133,8 +134,8 @@ export default function PLForm({ record }: Props) {
                   <div key={r.cid} className="grid grid-cols-12 gap-2 items-center">
                     <input className="input-sm col-span-12 md:col-span-4" placeholder="項目名稱"
                       value={r.label} onChange={e => update(r.cid, { label: e.target.value })} />
-                    <input className="input-sm col-span-8 md:col-span-3 text-right tabular-nums" type="number" step="0.01"
-                      value={toUnits(r.amountCents)} onChange={e => update(r.cid, { amountCents: toCents(e.target.value) })} />
+                    <MoneyInput className="input-sm col-span-8 md:col-span-3"
+                      cents={r.amountCents} onChange={c => update(r.cid, { amountCents: c })} />
                     <input className="input-sm col-span-10 md:col-span-4" placeholder="例如：修繕費、本期回收X月貨款"
                       value={r.note} onChange={e => update(r.cid, { note: e.target.value })} />
                     <button onClick={() => removeRow(r.cid)} className="btn-danger col-span-2 md:col-span-1" title="刪除">✕</button>
@@ -174,8 +175,7 @@ function Money({ label, cents, onChange }: { label: string; cents: number; onCha
   return (
     <div>
       <label className="label">{label}</label>
-      <input className="input-field text-right tabular-nums" type="number" step="0.01"
-        value={toUnits(cents)} onChange={e => onChange(toCents(e.target.value))} />
+      <MoneyInput className="input-field" cents={cents} onChange={onChange} />
     </div>
   )
 }

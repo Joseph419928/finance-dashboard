@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { fmtCurrency, fmtPct } from '@/lib/formatters'
 import { toCents, toUnits } from '@/lib/money'
 import { minToTime, timeToMin, shiftMinutes, parttimePayCents, totalMinutes } from '@/lib/payroll'
+import MoneyInput from '@/components/MoneyInput'
 
 interface Emp { id: number; name: string; type: string; defaultSalaryCents: number; defaultHourlyCents: number; active: boolean }
 interface ShiftR { cid: string; date: string; startMin: number; endMin: number; breakMin: number; note: string }
@@ -110,8 +111,8 @@ export default function PayrollPage() {
                 return (
                   <div key={e.cid} className="grid grid-cols-12 gap-2 items-center">
                     <div className="col-span-6 md:col-span-3 font-medium text-slate-800">{e.name}</div>
-                    <input className="input-sm col-span-6 md:col-span-3 text-right tabular-nums" type="number" step="1"
-                      value={toUnits(e.salaryCents)} onChange={ev => setFt(s => s.map(x => x.cid === e.cid ? { ...x, salaryCents: toCents(ev.target.value) } : x))} />
+                    <MoneyInput className="input-sm col-span-6 md:col-span-3"
+                      cents={e.salaryCents} onChange={c => setFt(s => s.map(x => x.cid === e.cid ? { ...x, salaryCents: c } : x))} />
                     <div className="col-span-6 md:col-span-3 text-sm">
                       {pct > 0.0001 ? <span className="badge bg-emerald-50 text-emerald-700">▲ {fmtPct(pct)} · {e.raiseCount} 次</span>
                         : pct < -0.0001 ? <span className="badge bg-rose-50 text-rose-700">▼ {fmtPct(pct)}</span>
@@ -142,8 +143,8 @@ export default function PayrollPage() {
                       <div className="col-span-5 md:col-span-3 font-medium text-slate-800">{e.name}</div>
                       <div className="col-span-7 md:col-span-3 flex items-center gap-1">
                         <span className="text-xs text-slate-400">時薪</span>
-                        <input className="input-sm text-right tabular-nums" type="number" step="1" value={toUnits(e.hourlyCents)}
-                          onChange={ev => setPt(s => s.map(x => x.cid === e.cid ? { ...x, hourlyCents: toCents(ev.target.value) } : x))} />
+                        <MoneyInput className="input-sm"
+                          cents={e.hourlyCents} onChange={c => setPt(s => s.map(x => x.cid === e.cid ? { ...x, hourlyCents: c } : x))} />
                       </div>
                       <div className="col-span-6 md:col-span-3 text-sm text-slate-500 tabular-nums">{(mins / 60).toFixed(1)} 小時</div>
                       <div className="col-span-5 md:col-span-2 text-right font-bold text-emerald-700 tabular-nums">{fmtCurrency(pay)}</div>
@@ -207,13 +208,13 @@ function AddPicker({ label, options, onPick }: { label: string; options: Emp[]; 
 function AddEmployee({ onDone }: { onDone: () => void }) {
   const [name, setName] = useState('')
   const [type, setType] = useState('FULLTIME')
-  const [amount, setAmount] = useState(0)
+  const [amountCents, setAmountCents] = useState(0)
   const [err, setErr] = useState('')
   async function create() {
     if (!name.trim()) { setErr('請輸入姓名'); return }
     const body = type === 'FULLTIME'
-      ? { name, type, defaultSalaryCents: toCents(amount) }
-      : { name, type, defaultHourlyCents: toCents(amount) }
+      ? { name, type, defaultSalaryCents: amountCents }
+      : { name, type, defaultHourlyCents: amountCents }
     const res = await fetch('/api/employee', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
     if (res.ok) onDone()
     else setErr((await res.json()).error || '新增失敗')
@@ -228,7 +229,7 @@ function AddEmployee({ onDone }: { onDone: () => void }) {
           </select>
         </div>
         <div><label className="label">{type === 'FULLTIME' ? '預設月薪(元)' : '預設時薪(元)'}</label>
-          <input className="input-sm w-32 text-right" type="number" value={amount} onChange={e => setAmount(parseFloat(e.target.value) || 0)} /></div>
+          <MoneyInput className="input-sm w-32" cents={amountCents} onChange={setAmountCents} /></div>
         <button onClick={create} className="btn-primary">建立</button>
         {err && <span className="text-sm text-rose-600">{err}</span>}
       </div>

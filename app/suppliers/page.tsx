@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState, useCallback } from 'react'
 import { fmtCurrency } from '@/lib/formatters'
-import { toCents, toUnits } from '@/lib/money'
+import MoneyInput from '@/components/MoneyInput'
 
 interface Row { cid: string; name: string; amountCents: number; note: string }
 let _c = 0
@@ -90,7 +90,8 @@ export default function SuppliersPage() {
               {rows.map(r => (
                 <div key={r.cid} className="grid grid-cols-12 gap-2 items-center">
                   <input className="input-sm col-span-12 md:col-span-4" placeholder="貨主名稱" value={r.name} onChange={e => upd(r.cid, { name: e.target.value })} />
-                  <input className="input-sm col-span-8 md:col-span-3 text-right tabular-nums" type="number" step="0.01" value={toUnits(r.amountCents)} onChange={e => upd(r.cid, { amountCents: toCents(e.target.value) })} />
+                  <MoneyInput className="input-sm col-span-8 md:col-span-3"
+                    cents={r.amountCents} onChange={c => upd(r.cid, { amountCents: c })} />
                   <input className="input-sm col-span-10 md:col-span-4" placeholder="備註" value={r.note} onChange={e => upd(r.cid, { note: e.target.value })} />
                   <button onClick={() => del(r.cid)} className="btn-danger col-span-2 md:col-span-1">✕</button>
                 </div>
