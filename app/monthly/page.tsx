@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db'
 import Link from 'next/link'
-import { calcTotalExpenses, calcNetProfit, getStatusColor, type MonthlyPL } from '@/lib/types'
+import { calcRevenue, calcTotalExpenses, calcNetIncome, getStatusColor, type MonthlyPL } from '@/lib/types'
 import { fmtCurrency, fmtPct } from '@/lib/formatters'
 
 export const dynamic = 'force-dynamic'
@@ -38,7 +38,7 @@ export default async function MonthlyPage() {
                   <thead className="bg-slate-50">
                     <tr>
                       <th className="th text-left">月份</th>
-                      <th className="th-r">實際營收</th>
+                      <th className="th-r">營業收入</th>
                       <th className="th-r">預算</th>
                       <th className="th-r">達成率</th>
                       <th className="th-r">總支出</th>
@@ -50,14 +50,15 @@ export default async function MonthlyPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {rows.map(r => {
+                      const revenue = calcRevenue(r)
                       const expenses = calcTotalExpenses(r)
-                      const profit = calcNetProfit(r)
-                      const achieve = r.revenueBudget > 0 ? r.revenueActual / r.revenueBudget : 0
-                      const margin = r.revenueActual > 0 ? profit / r.revenueActual : 0
+                      const profit = calcNetIncome(r)
+                      const achieve = r.revenueBudget > 0 ? revenue / r.revenueBudget : 0
+                      const margin = revenue > 0 ? profit / revenue : 0
                       return (
                         <tr key={r.id} className="hover:bg-slate-50/70 transition">
                           <td className="td font-semibold text-slate-800">{r.year}/{String(r.month).padStart(2, '0')}</td>
-                          <td className="td-r text-slate-700">{fmtCurrency(r.revenueActual)}</td>
+                          <td className="td-r text-slate-700">{fmtCurrency(revenue)}</td>
                           <td className="td-r text-slate-400">{fmtCurrency(r.revenueBudget)}</td>
                           <td className={`td-r font-medium ${achieve >= 1 ? 'text-emerald-600' : achieve >= 0.85 ? 'text-amber-600' : 'text-rose-500'}`}>
                             {r.revenueBudget > 0 ? fmtPct(achieve) : '—'}
@@ -65,7 +66,7 @@ export default async function MonthlyPage() {
                           <td className="td-r text-slate-700">{fmtCurrency(expenses)}</td>
                           <td className={`td-r font-semibold ${profit >= 0 ? 'text-emerald-700' : 'text-rose-600'}`}>{fmtCurrency(profit)}</td>
                           <td className={`td-r ${margin >= 0.1 ? 'text-emerald-600' : margin >= 0 ? 'text-amber-600' : 'text-rose-500'}`}>
-                            {r.revenueActual > 0 ? fmtPct(margin) : '—'}
+                            {revenue > 0 ? fmtPct(margin) : '—'}
                           </td>
                           <td className="td text-center">
                             {r.status && <span className={`badge ${getStatusColor(r.status)}`}>{r.status}</span>}

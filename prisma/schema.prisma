@@ -23,19 +23,30 @@ model MonthlyPL {
   // 直接輸入欄位
   revenueBudget  Int    @default(0) // 預算營收
   revenueFaceVal Int    @default(0) // 帳面營業額 (Forecast)
-  bankBalance    Int    @default(0) // 月底銀行餘額
+  bankBalance    Int    @default(0) // 月底銀行餘額（F9：屬資產項，損益計算不引用）
   notes          String @default("")
   status         String @default("") // 低於預算 / 符合預算 / 超出預算
 
+  // 營收：權責 vs 現金雙軌（F1）
+  revenueActual  Int @default(0) // 營業收入明細加總 = 現金回收（輔助）
+  revenueAccrual Int @default(0) // 權責認列營業收入（損益表本體營收）
+  arBalance      Int @default(0) // 期末應收帳款（輔助）
+  apBalance      Int @default(0) // 期末應付帳款（輔助）
+
+  // 所得稅費用（F3）
+  incomeTaxCents Int @default(0)
+
   // 分類總額快取（= 對應 LineItem 加總；payrollTotal = 薪資模組加總）
-  revenueActual    Int @default(0) // 營業收入(現金) 加總
-  procurementTotal Int @default(0) // 採購款 加總
-  payrollTotal     Int @default(0) // 人事薪資 加總（來自薪資模組）
-  fixedTotal       Int @default(0) // 每月固定支出 加總
-  operatingTotal   Int @default(0) // 營業費用 加總
-  centralTotal     Int @default(0) // 中區支出 加總
-  nonOperatingTotal Int @default(0) // 營業外費用 加總
-  shareholderTotal Int @default(0) // 股東提撥 加總
+  procurementTotal        Int @default(0) // 營業成本(採購) 加總
+  payrollTotal            Int @default(0) // 薪資費用 加總（來自薪資模組）
+  fixedTotal              Int @default(0) // 每月固定支出 加總
+  operatingTotal          Int @default(0) // 營業費用 加總
+  centralTotal            Int @default(0) // 中區支出 加總
+  depreciationTotal       Int @default(0) // 折舊費用 加總（F6）
+  nonOperatingTotal       Int @default(0) // 營業外費用 加總
+  nonOperatingIncomeTotal Int @default(0) // 營業外收入 加總（F5）
+  financingPrincipalTotal Int @default(0) // 融資-本金償還 加總（F6，非損益）
+  shareholderTotal        Int @default(0) // 股東提撥 加總（F4，非損益）
 
   lineItems LineItem[]
 
@@ -49,10 +60,11 @@ model MonthlyPL {
 model LineItem {
   id          Int       @id @default(autoincrement())
   monthlyPLId Int
-  category    String // REVENUE / PROCUREMENT / FIXED / OPERATING / CENTRAL / NON_OPERATING / SHAREHOLDER
+  category    String // 列舉見 lib/categories.ts（REVENUE / PROCUREMENT / OPEX 群組…）
   label       String // 項目名稱，例如「市場-小哥」「修繕費」
   amountCents Int       @default(0)
   note        String    @default("") // 細項備註：此筆費用發生的原因
+  costCenter  String    @default("") // 成本中心（地區/據點，如「中區」「總部」），第二維度分析用（F8）
   sortOrder   Int       @default(0)
   monthlyPL   MonthlyPL @relation(fields: [monthlyPLId], references: [id], onDelete: Cascade)
 

@@ -1,15 +1,19 @@
 import { prisma } from '@/lib/db'
 import PLForm from '@/components/PLForm'
+import MonthlySummaryCharts from '@/components/MonthlySummaryCharts'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { calcNetProfit, getStatusColor, type MonthlyPL, type LineItem } from '@/lib/types'
+import { calcNetIncome, summarizePeriod, getStatusColor, type MonthlyPL, type LineItem } from '@/lib/types'
 import { fmtCurrency } from '@/lib/formatters'
 
 export const dynamic = 'force-dynamic'
 
-interface Props { params: { year: string; month: string } }
+interface Props {
+  params: { year: string; month: string }
+  searchParams: { cmp?: string }
+}
 
-export default async function EditMonthPage({ params }: Props) {
+export default async function EditMonthPage({ params, searchParams }: Props) {
   const year = parseInt(params.year)
   const month = parseInt(params.month)
   if (isNaN(year) || isNaN(month)) notFound()
@@ -20,7 +24,16 @@ export default async function EditMonthPage({ params }: Props) {
   })
   if (!record) notFound()
 
-  const netProfit = calcNetProfit(record as unknown as MonthlyPL)
+  const plRecord = record as unknown as MonthlyPL
+  const netIncome = calcNetIncome(plRecord)
+  const summary = summarizePeriod(plRecord)
+
+  // 可供「自選某期」比較的期間清單
+  const all = await prisma.monthlyPL.findMany({
+    orderBy: [{ year: 'desc' }, { month: 'desc' }],
+    select: { year: true, month: true },
+  })
+  const periods = all.map(p => ({ year: p.year, month: p.month, label: `${p.year}/${String(p.month).padStart(2, '0')}` }))
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -35,11 +48,18 @@ export default async function EditMonthPage({ params }: Props) {
           {record.status && (
             <span className={`badge ${getStatusColor(record.status)}`}>{record.status}</span>
           )}
-          <span className={`text-sm font-semibold tabular-nums ${netProfit >= 0 ? 'text-emerald-700' : 'text-rose-600'}`}>
-            損益：{fmtCurrency(netProfit)}
+          <span className={`text-sm font-semibold tabular-nums ${netIncome >= 0 ? 'text-emerald-700' : 'text-rose-600'}`}>
+            本期淨利：{fmtCurrency(netIncome)}
           </span>
         </div>
       </div>
+
+      {/* F11：每月結算圖表 + 期間比較 */}
+      <section className="mb-8">
+        <h2 className="text-base font-semibold text-slate-700 mb-3">本月結算圖表</h2>
+        <MonthlySummaryCharts current={summary} periods={periods} initialCmp={searchParams.cmp ?? ''} />
+      </section>
+
       <PLForm record={record as unknown as MonthlyPL & { lineItems: LineItem[] }} />
     </div>
   )

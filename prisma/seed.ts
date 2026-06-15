@@ -14,7 +14,10 @@ const TOTAL_FIELD: Record<string, string> = {
   FIXED: 'fixedTotal',
   OPERATING: 'operatingTotal',
   CENTRAL: 'centralTotal',
+  DEPRECIATION: 'depreciationTotal',
   NON_OPERATING: 'nonOperatingTotal',
+  NON_OPERATING_INCOME: 'nonOperatingIncomeTotal',
+  FINANCING_PRINCIPAL: 'financingPrincipalTotal',
   SHAREHOLDER: 'shareholderTotal',
 }
 
@@ -46,9 +49,13 @@ async function clearAll() {
 async function seedMonth(m: Mon) {
   const sums: Record<string, number> = {
     revenueActual: 0, procurementTotal: 0, payrollTotal: 0, fixedTotal: 0,
-    operatingTotal: 0, centralTotal: 0, nonOperatingTotal: 0, shareholderTotal: 0,
+    operatingTotal: 0, centralTotal: 0, depreciationTotal: 0, nonOperatingTotal: 0,
+    nonOperatingIncomeTotal: 0, financingPrincipalTotal: 0, shareholderTotal: 0,
   }
-  for (const li of m.lineItems) sums[TOTAL_FIELD[li.category]] += C(li.amount)
+  for (const li of m.lineItems) {
+    const field = TOTAL_FIELD[li.category]
+    if (field) sums[field] += C(li.amount)
+  }
 
   const pl = await prisma.monthlyPL.create({
     data: {
