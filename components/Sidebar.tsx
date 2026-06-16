@@ -7,7 +7,7 @@ const nav = [
   { href: '/monthly', label: '每月損益', icon: '📋' },
   { href: '/suppliers', label: '月結貨主', icon: '📦' },
   { href: '/payroll', label: '薪資管理', icon: '👥' },
-  { href: '/report/2025', label: '2025 損益表', icon: '📑' },
+  { href: '/report/2025', label: '年度損益表', icon: '📑' },
 ]
 
 export default function Sidebar() {

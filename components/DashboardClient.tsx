@@ -244,7 +244,7 @@ export default function DashboardClient(props: Props) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {monthlyTrend.map((r) => (
+                {[...monthlyTrend].reverse().map((r) => (
                   <tr key={r.label} className="hover:bg-slate-50 transition">
                     <td className="px-2 py-3 font-medium text-slate-800">{r.label}</td>
                     <td className="table-cell text-slate-700">{fmtCurrency(r.revenue)}</td>
