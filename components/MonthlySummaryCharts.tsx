@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { fmtCurrency, fmtPct } from '@/lib/formatters'
+import { fmtCurrency, fmtPct, ratioOfRevenue } from '@/lib/formatters'
 import type { PeriodSummary, PeriodComparison } from '@/lib/types'
 import {
   Chart as ChartJS,
@@ -90,19 +90,39 @@ export default function MonthlySummaryCharts({ current, periods, initialCmp }: P
   const expValues = Object.values(current.expenseBreakdown)
   const expenseData = { labels: expLabels, datasets: [{ data: expValues, backgroundColor: PIE_COLORS, borderWidth: 0 }] }
 
-  // ── 期間比較分層長條 ──
-  const cmpLayers: { key: keyof PeriodComparison; label: string }[] = [
+  // ── 期間比較：主要損益層級（長條圖用，避免過度擁擠）──
+  const barLayers: { key: keyof PeriodComparison; label: string }[] = [
     { key: 'revenue', label: '營業收入' },
     { key: 'grossProfit', label: '營業毛利' },
     { key: 'operatingIncome', label: '營業淨利' },
     { key: 'pretaxIncome', label: '稅前淨利' },
     { key: 'netIncome', label: '本期淨利' },
   ]
+  // ── 期間比較：完整明細（表格用，採購、營業費用…等全數可比較）──
+  // subtotal=true 為損益小計列（加底色），其餘為明細分類。
+  const cmpLayers: { key: keyof PeriodComparison; label: string; subtotal?: boolean }[] = [
+    { key: 'revenue', label: '營業收入', subtotal: true },
+    { key: 'cogs', label: '營業成本（採購）' },
+    { key: 'grossProfit', label: '營業毛利', subtotal: true },
+    { key: 'payroll', label: '薪資費用' },
+    { key: 'fixed', label: '租金費用' },
+    { key: 'operating', label: '營業費用' },
+    { key: 'central', label: '中區支出' },
+    { key: 'depreciation', label: '折舊費用' },
+    { key: 'opex', label: '營業費用合計', subtotal: true },
+    { key: 'operatingIncome', label: '營業淨利', subtotal: true },
+    { key: 'nonOpIncome', label: '營業外收入' },
+    { key: 'nonOpExpense', label: '營業外費用' },
+    { key: 'nonOperatingNet', label: '營業外淨額', subtotal: true },
+    { key: 'pretaxIncome', label: '稅前淨利', subtotal: true },
+    { key: 'incomeTax', label: '所得稅費用' },
+    { key: 'netIncome', label: '本期淨利', subtotal: true },
+  ]
   const compareBarData = comparison ? {
-    labels: cmpLayers.map(l => l.label),
+    labels: barLayers.map(l => l.label),
     datasets: [
-      { label: current.label, data: cmpLayers.map(l => comparison[l.key].current), backgroundColor: 'rgba(59,130,246,0.75)', borderRadius: 4 },
-      { label: baseline?.label ?? '比較期', data: cmpLayers.map(l => comparison[l.key].baseline), backgroundColor: 'rgba(148,163,184,0.6)', borderRadius: 4 },
+      { label: current.label, data: barLayers.map(l => comparison[l.key].current), backgroundColor: 'rgba(59,130,246,0.75)', borderRadius: 4 },
+      { label: baseline?.label ?? '比較期', data: barLayers.map(l => comparison[l.key].baseline), backgroundColor: 'rgba(148,163,184,0.6)', borderRadius: 4 },
     ],
   } : null
 
@@ -192,9 +212,11 @@ export default function MonthlySummaryCharts({ current, periods, initialCmp }: P
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100 text-xs text-slate-500 uppercase">
-                  <th className="text-left px-2 py-2">損益層級</th>
+                  <th className="text-left px-2 py-2">損益項目</th>
                   <th className="text-right px-2 py-2">本期 {current.label}</th>
+                  <th className="text-right px-2 py-2">佔總營收</th>
                   <th className="text-right px-2 py-2">比較期 {baseline.label}</th>
+                  <th className="text-right px-2 py-2">佔總營收</th>
                   <th className="text-right px-2 py-2">差異額</th>
                   <th className="text-right px-2 py-2">差異率</th>
                 </tr>
@@ -204,15 +226,17 @@ export default function MonthlySummaryCharts({ current, periods, initialCmp }: P
                   const c = comparison[l.key]
                   const up = c.diff >= 0
                   return (
-                    <tr key={l.key} className="hover:bg-slate-50/60">
-                      <td className="px-2 py-2 font-medium text-slate-700">{l.label}</td>
+                    <tr key={l.key} className={l.subtotal ? 'bg-slate-50 font-semibold' : 'hover:bg-slate-50/60'}>
+                      <td className={`px-2 py-2 text-slate-700 ${l.subtotal ? 'font-semibold' : 'font-medium pl-4'}`}>{l.label}</td>
                       <td className="px-2 py-2 text-right tabular-nums text-slate-700">{fmtCurrency(c.current)}</td>
+                      <td className="px-2 py-2 text-right tabular-nums text-slate-400">{ratioOfRevenue(c.current, current.revenue)}</td>
                       <td className="px-2 py-2 text-right tabular-nums text-slate-500">{fmtCurrency(c.baseline)}</td>
+                      <td className="px-2 py-2 text-right tabular-nums text-slate-400">{ratioOfRevenue(c.baseline, baseline.revenue)}</td>
                       <td className={`px-2 py-2 text-right tabular-nums font-semibold ${up ? 'text-emerald-600' : 'text-rose-600'}`}>
                         {up ? '+' : ''}{fmtCurrency(c.diff)}
                       </td>
                       <td className={`px-2 py-2 text-right tabular-nums ${up ? 'text-emerald-600' : 'text-rose-600'}`}>
-                        {c.pct === null ? '—' : `${c.pct >= 0 ? '+' : ''}${(c.pct * 100).toFixed(1)}%`}
+                        {c.pct === null ? '—' : `${c.pct >= 0 ? '+' : ''}${(c.pct * 100).toFixed(2)}%`}
                       </td>
                     </tr>
                   )

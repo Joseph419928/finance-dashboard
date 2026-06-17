@@ -22,6 +22,17 @@ export function fmtPct(value: number): string {
   return `${(value * 100).toFixed(1)}%`
 }
 
+/** 百分比，表現至小數點後二位。 */
+export function fmtPct2(value: number): string {
+  return `${(value * 100).toFixed(2)}%`
+}
+
+/** 某金額佔總營收之比例（小數點後二位）；營收為 0 時回傳 '—'。 */
+export function ratioOfRevenue(cents: number, revenueCents: number): string {
+  if (!revenueCents) return '—'
+  return fmtPct2(cents / revenueCents)
+}
+
 export function fmtNum(value: number): string {
   return new Intl.NumberFormat('zh-TW').format(Math.round(value))
 }

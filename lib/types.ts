@@ -199,10 +199,21 @@ export interface CompareLayer {
 
 export interface PeriodComparison {
   revenue: CompareLayer
+  // 營業成本（含採購明細分類）
   cogs: CompareLayer
+  procurement: CompareLayer
   grossProfit: CompareLayer
+  // 營業費用（逐一分類，全數可比較）
+  payroll: CompareLayer
+  fixed: CompareLayer
+  operating: CompareLayer
+  central: CompareLayer
+  depreciation: CompareLayer
   opex: CompareLayer
   operatingIncome: CompareLayer
+  // 營業外（收入/費用分項）
+  nonOpIncome: CompareLayer
+  nonOpExpense: CompareLayer
   nonOperatingNet: CompareLayer
   pretaxIncome: CompareLayer
   incomeTax: CompareLayer
@@ -215,7 +226,16 @@ function layer(current: number, baseline: number): CompareLayer {
   return { current, baseline, diff, pct }
 }
 
-/** 各損益層級之本期 vs 比較期 { current, baseline, diff, pct }。 */
+/** 以分類快取欄位逐一比較（採購、薪資、營業費用…等明細項）。 */
+function layerField(
+  current: Partial<MonthlyPL>,
+  baseline: Partial<MonthlyPL>,
+  field: string,
+): CompareLayer {
+  return layer(fieldVal(current, field), fieldVal(baseline, field))
+}
+
+/** 各損益層級與各費用分類之本期 vs 比較期 { current, baseline, diff, pct }。 */
 export function comparePeriods(
   current: Partial<MonthlyPL>,
   baseline: Partial<MonthlyPL>,
@@ -223,9 +243,17 @@ export function comparePeriods(
   return {
     revenue: layer(calcRevenue(current), calcRevenue(baseline)),
     cogs: layer(calcCOGS(current), calcCOGS(baseline)),
+    procurement: layerField(current, baseline, 'procurementTotal'),
     grossProfit: layer(calcGrossProfit(current), calcGrossProfit(baseline)),
+    payroll: layerField(current, baseline, 'payrollTotal'),
+    fixed: layerField(current, baseline, 'fixedTotal'),
+    operating: layerField(current, baseline, 'operatingTotal'),
+    central: layerField(current, baseline, 'centralTotal'),
+    depreciation: layerField(current, baseline, 'depreciationTotal'),
     opex: layer(calcOpex(current), calcOpex(baseline)),
     operatingIncome: layer(calcOperatingIncome(current), calcOperatingIncome(baseline)),
+    nonOpIncome: layer(calcNonOpIncome(current), calcNonOpIncome(baseline)),
+    nonOpExpense: layer(calcNonOpExpense(current), calcNonOpExpense(baseline)),
     nonOperatingNet: layer(calcNonOperatingNet(current), calcNonOperatingNet(baseline)),
     pretaxIncome: layer(calcPretaxIncome(current), calcPretaxIncome(baseline)),
     incomeTax: layer(calcIncomeTax(current), calcIncomeTax(baseline)),

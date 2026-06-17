@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { fmtCurrency } from '@/lib/formatters'
+import { fmtCurrency, fmtPct2, ratioOfRevenue } from '@/lib/formatters'
 import MoneyInput from '@/components/MoneyInput'
 import { categoryDef, type Category } from '@/lib/categories'
 import {
@@ -108,6 +108,7 @@ export default function PLForm({ record }: Props) {
       key={cat}
       category={cat}
       rows={rows.filter(r => r.category === cat)}
+      revenue={revenue}
       onAdd={() => addRow(cat)}
       onRemove={removeRow}
       onUpdate={update}
@@ -121,10 +122,10 @@ export default function PLForm({ record }: Props) {
       {/* Live summary — 五層損益 + 達成率 */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         <Chip label="營業收入(權責)" value={fmtCurrency(revenue)} tone="emerald" />
-        <Chip label={`營業毛利 ${(grossMargin(pl) * 100).toFixed(1)}%`} value={fmtCurrency(grossProfit)} tone={grossProfit >= 0 ? 'emerald' : 'rose'} />
-        <Chip label={`營業淨利 ${(operatingMargin(pl) * 100).toFixed(1)}%`} value={fmtCurrency(operatingIncome)} tone={operatingIncome >= 0 ? 'emerald' : 'rose'} />
+        <Chip label={`營業毛利 ${fmtPct2(grossMargin(pl))}`} value={fmtCurrency(grossProfit)} tone={grossProfit >= 0 ? 'emerald' : 'rose'} />
+        <Chip label={`營業淨利 ${fmtPct2(operatingMargin(pl))}`} value={fmtCurrency(operatingIncome)} tone={operatingIncome >= 0 ? 'emerald' : 'rose'} />
         <Chip label="稅前淨利" value={fmtCurrency(pretaxIncome)} tone={pretaxIncome >= 0 ? 'emerald' : 'rose'} />
-        <Chip label={`本期淨利 ${(netMargin(pl) * 100).toFixed(1)}%`} value={fmtCurrency(netIncome)} tone={netIncome >= 0 ? 'emerald' : 'rose'} bold />
+        <Chip label={`本期淨利 ${fmtPct2(netMargin(pl))}`} value={fmtCurrency(netIncome)} tone={netIncome >= 0 ? 'emerald' : 'rose'} bold />
         <Chip label="達成率" value={revenueBudget > 0 ? `${(achieve * 100).toFixed(1)}%` : '—'} tone={achieve >= 1 ? 'emerald' : achieve >= 0.8 ? 'amber' : 'rose'} />
       </div>
 
@@ -224,9 +225,10 @@ export default function PLForm({ record }: Props) {
   )
 }
 
-function CategorySection({ category, rows, onAdd, onRemove, onUpdate }: {
+function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate }: {
   category: Category
   rows: Row[]
+  revenue: number
   onAdd: () => void
   onRemove: (cid: string) => void
   onUpdate: (cid: string, patch: Partial<Row>) => void
@@ -245,9 +247,10 @@ function CategorySection({ category, rows, onAdd, onRemove, onUpdate }: {
           {cat.hint && <p className="text-xs text-slate-400 mt-0.5">{cat.hint}</p>}
         </div>
         <div className="text-right">
-          <div className="text-xs text-slate-400">小計</div>
+          <div className="text-xs text-slate-400">小計 · 佔總營收</div>
           <div className={`text-base font-bold tabular-nums ${isIncome ? 'text-emerald-700' : 'text-slate-800'}`}>
             {fmtCurrency(subtotal)}
+            <span className="ml-2 text-xs font-normal text-slate-400">{ratioOfRevenue(subtotal, revenue)}</span>
           </div>
         </div>
       </div>
@@ -289,7 +292,7 @@ function SubtotalRow({ label, value, rate, strong }: { label: string; value: num
     <div className={`flex items-center justify-between rounded-xl px-4 py-3 ring-1 ${strong ? 'bg-slate-800 text-white ring-slate-700' : 'bg-slate-100 ring-slate-200'}`}>
       <span className={`font-bold ${strong ? 'text-white' : 'text-slate-700'} text-sm`}>
         ＝ {label}
-        {rate !== undefined && <span className={`ml-2 text-xs font-normal ${strong ? 'text-slate-300' : 'text-slate-400'}`}>{(rate * 100).toFixed(1)}%</span>}
+        {rate !== undefined && <span className={`ml-2 text-xs font-normal ${strong ? 'text-slate-300' : 'text-slate-400'}`}>{fmtPct2(rate)}</span>}
       </span>
       <span className={`text-lg font-bold tabular-nums ${strong ? (pos ? 'text-emerald-300' : 'text-rose-300') : (pos ? 'text-emerald-700' : 'text-rose-600')}`}>
         {fmtCurrency(value)}
