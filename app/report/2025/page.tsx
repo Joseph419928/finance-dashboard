@@ -18,9 +18,8 @@ export default async function AnnualReportPage({ searchParams }: Props) {
 
   const { rows, source } = await buildAnnualReport(selectedYear)
 
-  // 表格內是否有任何金額帶小數（角分）；有的話全表統一顯示 2 位小數，避免同欄位對不齊。
-  const decimals = rows.some(r => !r.isPct && [...r.months, r.total].some(v => Math.round(v) !== v)) ? 2 : 0
-  const money = (v: number) => (v === 0 ? '—' : fmtCurrencyFixed(v, decimals))
+  // 統一四捨五入至整數元顯示（不影響底層精確金額），避免同欄位一下有角分、一下沒有而對不齊。
+  const money = (v: number) => (v === 0 ? '—' : fmtCurrencyFixed(v, 0))
   const pct = (v: number) => (v === 0 ? '—' : `${(v / 100).toFixed(1)}%`)
   const monthCellClass = (v: number) => (v < 0 ? 'text-rose-600' : 'text-slate-600')
   const totalCellClass = (v: number, isSubtotal: boolean) =>
@@ -111,7 +110,7 @@ export default async function AnnualReportPage({ searchParams }: Props) {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-slate-400 mt-3">金額以整數「分」精確儲存，顯示時換算為元，完整顯示不縮寫。</p>
+          <p className="text-xs text-slate-400 mt-3">金額以整數「分」精確儲存；表格為易讀性統一四捨五入至整數元顯示，不影響底層精確金額。</p>
         </>
       )}
     </div>
