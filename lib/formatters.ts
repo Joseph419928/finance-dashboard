@@ -18,6 +18,15 @@ export function fmtCurrency(cents: number, compact = false): string {
   }).format(value)
 }
 
+/** 同一份表格內用，強制固定小數位數，讓整欄數字對齊、方便掃視比較。 */
+export function fmtCurrencyFixed(cents: number, decimals: number): string {
+  const value = toUnits(cents)
+  return new Intl.NumberFormat('zh-TW', {
+    style: 'currency', currency: 'TWD',
+    minimumFractionDigits: decimals, maximumFractionDigits: decimals,
+  }).format(value)
+}
+
 export function fmtPct(value: number): string {
   return `${(value * 100).toFixed(1)}%`
 }
