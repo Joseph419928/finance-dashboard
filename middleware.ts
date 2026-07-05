@@ -3,7 +3,8 @@ import type { NextRequest } from 'next/server'
 import { AUTH_COOKIE, sessionToken, safeEqual } from '@/lib/auth'
 
 // Paths that must stay reachable without a session.
-const PUBLIC_PATHS = ['/login', '/api/login']
+// /manifest.webmanifest (app/manifest.ts) is included so home-screen installs still resolve pre-login.
+const PUBLIC_PATHS = ['/login', '/api/login', '/manifest.webmanifest']
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
