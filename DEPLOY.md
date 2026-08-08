@@ -67,11 +67,13 @@ git push -u origin main
 部署完成後，在 Railway 服務的 **Shell** 分頁執行：
 
 ```bash
-node node_modules/prisma/build/index.js migrate deploy
+npx prisma db push
 npx tsx prisma/seed.ts
 ```
 
 這會建立資料表並匯入 3 筆範例月份資料（2025/03、2025/04、2026/02）。
+
+> 本專案不使用 migration 歷史，schema 變更一律由部署時的 `prisma db push` 套用。
 
 ---
 
@@ -81,8 +83,8 @@ npx tsx prisma/seed.ts
 # 安裝相依套件
 npm install
 
-# 初始化資料庫
-npx prisma migrate dev
+# 初始化／同步資料庫 schema
+npx prisma db push
 
 # 匯入種子資料
 npm run db:seed

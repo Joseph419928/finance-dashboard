@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { parseYearMonth } from '@/lib/pl'
+import { normalizeName } from '@/lib/preset'
 
 function ym(req: NextRequest) {
   const { searchParams } = new URL(req.url)
@@ -27,7 +28,7 @@ export async function PUT(req: NextRequest) {
     ? ((body as Record<string, unknown>).suppliers as unknown[]) : []
   const clean = rows.map((raw, i) => {
     const r = (raw ?? {}) as Record<string, unknown>
-    const name = String(r.name ?? '').trim()
+    const name = normalizeName(r.name)
     const amtRaw = typeof r.amountCents === 'number' ? r.amountCents : parseFloat(String(r.amountCents))
     const amountCents = Number.isFinite(amtRaw) ? Math.round(amtRaw) : 0
     return { name, amountCents, note: String(r.note ?? ''), sortOrder: i, year: p.year, month: p.month }

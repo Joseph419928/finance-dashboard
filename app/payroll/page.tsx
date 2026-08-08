@@ -1,5 +1,6 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
+import Link from 'next/link'
 import { fmtCurrency, fmtPct } from '@/lib/formatters'
 import { toCents, toUnits } from '@/lib/money'
 import { minToTime, timeToMin, shiftMinutes, parttimePayCents, totalMinutes } from '@/lib/payroll'
@@ -20,6 +21,8 @@ export default function PayrollPage() {
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState('')
   const [showAdd, setShowAdd] = useState(false)
+  const [importing, setImporting] = useState(false)
+  const [showMonthlyLink, setShowMonthlyLink] = useState(false)
 
   const load = useCallback(async () => {
     setLoading(true); setMsg('')
@@ -51,17 +54,55 @@ export default function PayrollPage() {
     setPt(s => [...s, { cid: cid(), employeeId: e.id, name: e.name, hourlyCents: e.defaultHourlyCents, note: '', shifts: [], open: true }])
   }
 
-  async function save() {
+  async function save(): Promise<boolean> {
     setMsg('儲存中...')
-    const res = await fetch(`/api/payroll?year=${year}&month=${month}`, {
-      method: 'PUT', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fulltime: ft.map(e => ({ employeeId: e.employeeId, salaryCents: e.salaryCents, note: e.note })),
-        parttime: pt.map(e => ({ employeeId: e.employeeId, hourlyCents: e.hourlyCents, note: e.note,
-          shifts: e.shifts.map(s => ({ date: s.date, startMin: s.startMin, endMin: s.endMin, breakMin: s.breakMin, note: s.note })) })),
-      }),
-    })
-    if (res.ok) { setMsg('已儲存'); load() } else setMsg('儲存失敗')
+    setShowMonthlyLink(false)
+    try {
+      const res = await fetch(`/api/payroll?year=${year}&month=${month}`, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fulltime: ft.map(e => ({ employeeId: e.employeeId, salaryCents: e.salaryCents, note: e.note })),
+          parttime: pt.map(e => ({ employeeId: e.employeeId, hourlyCents: e.hourlyCents, note: e.note,
+            shifts: e.shifts.map(s => ({ date: s.date, startMin: s.startMin, endMin: s.endMin, breakMin: s.breakMin, note: s.note })) })),
+        }),
+      })
+      if (!res.ok) throw new Error('儲存失敗')
+      setMsg('已儲存')
+      return true
+    } catch (error) {
+      setMsg(error instanceof Error ? error.message : '儲存失敗')
+      return false
+    }
+  }
+
+  async function importToPL() {
+    const target = `${year}/${String(month).padStart(2, '0')}`
+    const count = ft.length + pt.length
+    if (!confirm(`將 ${target} 的薪資明細（共 ${count} 筆、合計 ${fmtCurrency(ftTotal + ptTotal)}）匯入 ${target} 損益表的「人事薪資」？\n\n• 會先儲存本頁目前的編輯內容\n• 損益表中先前由薪資匯入的列會被取代\n• 手動輸入的列不受影響`)) return
+    setImporting(true)
+    setShowMonthlyLink(false)
+    try {
+      if (!(await save())) return
+      const res = await fetch('/api/pl/import/payroll', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ year, month }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || '匯入失敗')
+      if (data.imported === 0) {
+        setMsg(data.message || '沒有可匯入的薪資資料')
+      } else {
+        const warning = data.manualCount > 0
+          ? `；另有 ${data.manualCount} 筆手動輸入的人事薪資，請確認是否重複。`
+          : ''
+        setMsg(`已匯入 ${data.imported} 筆至 ${target} 損益表（合計 ${fmtCurrency(data.totalCents)}）${warning}`)
+        setShowMonthlyLink(true)
+      }
+    } catch (error) {
+      setMsg(error instanceof Error ? error.message : '匯入失敗')
+    } finally {
+      setImporting(false)
+    }
   }
 
   async function carry() {
@@ -87,6 +128,9 @@ export default function PayrollPage() {
         <div><label className="label">年</label><input className="input-sm w-24" type="number" value={year} onChange={e => setYear(parseInt(e.target.value) || year)} /></div>
         <div><label className="label">月</label><input className="input-sm w-20" type="number" min={1} max={12} value={month} onChange={e => setMonth(parseInt(e.target.value) || month)} /></div>
         <button onClick={carry} className="btn-secondary">↻ 帶入上一期</button>
+        <button onClick={importToPL} disabled={importing} className="btn-secondary">
+          {importing ? '匯入中…' : `⇩ 匯入至 ${year}/${month} 損益表`}
+        </button>
         <div className="ml-auto text-right">
           <div className="text-xs text-slate-400">本月薪資合計（正職 + 兼職）</div>
           <div className="text-xl font-bold text-slate-800 tabular-nums">{fmtCurrency(ftTotal + ptTotal)}</div>
@@ -187,6 +231,7 @@ export default function PayrollPage() {
           <div className="flex items-center gap-3">
             <button onClick={save} className="btn-primary px-8">儲存</button>
             {msg && <span className="text-sm text-emerald-600">{msg}</span>}
+            {showMonthlyLink && <Link className="text-sm text-emerald-700 underline" href={`/monthly/${year}/${month}`}>開啟損益表</Link>}
           </div>
         </>
       )}

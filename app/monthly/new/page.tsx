@@ -10,16 +10,21 @@ export default function NewMonthPage() {
   const [month, setMonth] = useState(now.getMonth() + 1)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
+  const [carryFixed, setCarryFixed] = useState(true)
 
   async function create() {
     setBusy(true); setError('')
     try {
       const res = await fetch('/api/pl', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ year, month }),
+        body: JSON.stringify({ year, month, carryFixed }),
       })
-      if (!res.ok) throw new Error((await res.json()).error || '建立失敗')
-      router.push(`/monthly/${year}/${month}`)
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || '建立失敗')
+      const query = data.carriedFixed > 0
+        ? `?carried=${data.carriedFixed}&from=${encodeURIComponent(data.carriedFrom || '')}`
+        : ''
+      router.push(`/monthly/${year}/${month}${query}`)
       router.refresh()
     } catch (e) {
       setError(e instanceof Error ? e.message : '建立失敗'); setBusy(false)
@@ -46,6 +51,13 @@ export default function NewMonthPage() {
               onChange={e => setMonth(parseInt(e.target.value) || month)} />
           </div>
         </div>
+        <label className="flex items-start gap-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
+          <input className="mt-0.5" type="checkbox" checked={carryFixed} onChange={e => setCarryFixed(e.target.checked)} />
+          <span>
+            <span className="font-medium">自動帶入上一期的每月固定支出</span>
+            <span className="block text-xs text-slate-400 mt-1">會把上一期「每月固定支出」的項目與金額原樣複製到新月份，之後仍可自行修改。</span>
+          </span>
+        </label>
         <button onClick={create} disabled={busy} className="btn-primary w-full">
           {busy ? '建立中...' : '建立並開始編輯'}
         </button>

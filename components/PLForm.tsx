@@ -1,9 +1,11 @@
 'use client'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { fmtCurrency, fmtPct2, ratioOfRevenue } from '@/lib/formatters'
 import MoneyInput from '@/components/MoneyInput'
+import PresetSelect from '@/components/PresetSelect'
 import { categoryDef, type Category } from '@/lib/categories'
+import { LINE_SOURCES, toLineSource, type LineSource } from '@/lib/lineSource'
 import {
   calcRevenue, calcGrossProfit, calcOpex, calcOperatingIncome,
   calcNonOperatingNet, calcPretaxIncome, calcNetIncome, calcDisposable,
@@ -14,7 +16,7 @@ interface Props {
   record: MonthlyPL & { lineItems: LineItem[] }
 }
 
-interface Row { cid: string; category: Category; label: string; amountCents: number; note: string; costCenter: string }
+interface Row { cid: string; category: Category; label: string; amountCents: number; note: string; costCenter: string; source: LineSource }
 let _cid = 0
 const newCid = () => `r${++_cid}`
 
@@ -25,7 +27,7 @@ export default function PLForm({ record }: Props) {
   const [rows, setRows] = useState<Row[]>(
     (record.lineItems || []).map(li => ({
       cid: newCid(), category: li.category, label: li.label, amountCents: li.amountCents,
-      note: li.note, costCenter: li.costCenter || '',
+      note: li.note, costCenter: li.costCenter || '', source: toLineSource(li.source),
     }))
   )
   const [revenueBudget, setRevenueBudget] = useState(record.revenueBudget)
@@ -40,6 +42,8 @@ export default function PLForm({ record }: Props) {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const [savedAt, setSavedAt] = useState('')
+  const [hint, setHint] = useState('')
+  const [importing, setImporting] = useState(false)
 
   const sumCat = (c: Category) => rows.filter(r => r.category === c).reduce((a, r) => a + r.amountCents, 0)
 
@@ -68,14 +72,14 @@ export default function PLForm({ record }: Props) {
   const achieve = revenueBudget > 0 ? revenue / revenueBudget : 0
 
   function addRow(category: Category) {
-    setRows(rs => [...rs, { cid: newCid(), category, label: '', amountCents: 0, note: '', costCenter: '' }])
+    setRows(rs => [...rs, { cid: newCid(), category, label: '', amountCents: 0, note: '', costCenter: '', source: 'MANUAL' }])
   }
   function removeRow(cid: string) { setRows(rs => rs.filter(r => r.cid !== cid)) }
   function update(cid: string, patch: Partial<Row>) {
     setRows(rs => rs.map(r => (r.cid === cid ? { ...r, ...patch } : r)))
   }
 
-  async function save() {
+  async function save(): Promise<boolean> {
     setSaving(true); setError('')
     try {
       const res = await fetch(`/api/pl/${record.id}`, {
@@ -85,15 +89,17 @@ export default function PLForm({ record }: Props) {
           bankBalance, arBalance, apBalance, status, notes,
           lineItems: rows.map((r, i) => ({
             category: r.category, label: r.label, amountCents: r.amountCents,
-            note: r.note, costCenter: r.costCenter, sortOrder: i,
+            note: r.note, costCenter: r.costCenter, sortOrder: i, source: r.source,
           })),
         }),
       })
       if (!res.ok) throw new Error(await res.text())
       setSavedAt(new Date().toLocaleTimeString('zh-TW'))
       router.refresh()
+      return true
     } catch (e) {
       setError(e instanceof Error ? e.message : '儲存失敗')
+      return false
     } finally { setSaving(false) }
   }
 
@@ -101,6 +107,54 @@ export default function PLForm({ record }: Props) {
     if (!confirm('確定要刪除此月份及其所有細項？')) return
     const res = await fetch(`/api/pl/${record.id}`, { method: 'DELETE' })
     if (res.ok) { router.push('/monthly'); router.refresh() }
+  }
+
+  async function runImport(url: string, confirmText: string) {
+    if (!confirm(confirmText)) return
+    setImporting(true)
+    setHint('')
+    try {
+      if (!(await save())) return
+      const res = await fetch(url, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ year: record.year, month: record.month }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || '操作失敗')
+      if (Array.isArray(data.lineItems)) {
+        setRows(data.lineItems.map((li: LineItem) => ({
+          cid: newCid(), category: li.category, label: li.label,
+          amountCents: li.amountCents, note: li.note,
+          costCenter: li.costCenter || '', source: toLineSource(li.source),
+        })))
+      }
+      if ((data.imported ?? data.copied ?? 0) === 0) {
+        setHint(data.message || '沒有可帶入的資料')
+      } else {
+        const count = data.imported ?? data.copied
+        const warning = data.manualCount > 0 ? `；另有 ${data.manualCount} 筆手動輸入，請確認是否重複` : ''
+        setHint(`已完成 ${count} 筆，合計 ${fmtCurrency(data.totalCents || 0)}${warning}`)
+      }
+      router.refresh()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '操作失敗')
+    } finally {
+      setImporting(false)
+    }
+  }
+
+  function importAction(cat: Category): ReactNode {
+    const common = `\n\n• 會先儲存目前編輯內容\n• 同來源既有列會被取代\n• 手動輸入的列不受影響`
+    if (cat === 'PROCUREMENT') {
+      return <button disabled={importing} className="btn-secondary" onClick={() => runImport('/api/pl/import/supplier', `由貨主模組匯入本期「營業成本（採購）」？${common}`)}>{importing ? '處理中…' : '⇩ 由貨主模組匯入'}</button>
+    }
+    if (cat === 'PAYROLL') {
+      return <button disabled={importing} className="btn-secondary" onClick={() => runImport('/api/pl/import/payroll', `由薪資模組匯入本期「人事薪資」？${common}`)}>{importing ? '處理中…' : '⇩ 由薪資模組匯入'}</button>
+    }
+    if (cat === 'FIXED') {
+      return <button disabled={importing} className="btn-secondary" onClick={() => runImport('/api/pl/carry/fixed', `帶入上一期固定支出（項目與金額原樣複製）？${common}`)}>{importing ? '處理中…' : '↻ 帶入上一期固定支出'}</button>
+    }
+    return undefined
   }
 
   const section = (cat: Category) => (
@@ -112,12 +166,14 @@ export default function PLForm({ record }: Props) {
       onAdd={() => addRow(cat)}
       onRemove={removeRow}
       onUpdate={update}
+      action={importAction(cat)}
     />
   )
 
   return (
     <div className="space-y-5">
       {error && <div className="bg-rose-50 text-rose-600 px-4 py-3 rounded-xl text-sm">{error}</div>}
+      {hint && <div className="bg-emerald-50 text-emerald-700 px-4 py-3 rounded-xl text-sm">{hint}</div>}
 
       {/* Live summary — 五層損益 + 達成率 */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -225,13 +281,14 @@ export default function PLForm({ record }: Props) {
   )
 }
 
-function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate }: {
+function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate, action }: {
   category: Category
   rows: Row[]
   revenue: number
   onAdd: () => void
   onRemove: (cid: string) => void
   onUpdate: (cid: string, patch: Partial<Row>) => void
+  action?: ReactNode
 }) {
   const cat = categoryDef(category)!
   const subtotal = rows.reduce((a, r) => a + r.amountCents, 0)
@@ -246,11 +303,14 @@ function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate }:
           </h3>
           {cat.hint && <p className="text-xs text-slate-400 mt-0.5">{cat.hint}</p>}
         </div>
-        <div className="text-right">
+        <div className="flex items-center gap-3">
+          {action}
+          <div className="text-right">
           <div className="text-xs text-slate-400">小計 · 佔總營收</div>
           <div className={`text-base font-bold tabular-nums ${isIncome ? 'text-emerald-700' : 'text-slate-800'}`}>
             {fmtCurrency(subtotal)}
             <span className="ml-2 text-xs font-normal text-slate-400">{ratioOfRevenue(subtotal, revenue)}</span>
+          </div>
           </div>
         </div>
       </div>
@@ -265,12 +325,23 @@ function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate }:
           </div>
           {rows.map(r => (
             <div key={r.cid} className="grid grid-cols-12 gap-2 items-center">
-              <input className="input-sm col-span-12 md:col-span-3" placeholder="項目名稱"
-                value={r.label} onChange={e => onUpdate(r.cid, { label: e.target.value })} />
+              <div className="col-span-12 md:col-span-3 flex items-center gap-1">
+                <PresetSelect className="input-sm min-w-0 flex-1" scope="LINE_ITEM" category={category} value={r.label}
+                  onChange={(name, preset) => onUpdate(r.cid, {
+                    label: name,
+                    ...(preset && !r.note ? { note: preset.note } : {}),
+                    ...(preset && !r.costCenter ? { costCenter: preset.costCenter } : {}),
+                  })} />
+                {r.source !== 'MANUAL' && (
+                  <span className="badge whitespace-nowrap" title={`${LINE_SOURCES[r.source].label}，重新匯入會取代此列`}>
+                    {LINE_SOURCES[r.source].badge}
+                  </span>
+                )}
+              </div>
               <MoneyInput className="input-sm col-span-6 md:col-span-2"
                 cents={r.amountCents} onChange={c => onUpdate(r.cid, { amountCents: c })} />
-              <input className="input-sm col-span-6 md:col-span-2" placeholder="如：中區/總部"
-                value={r.costCenter} onChange={e => onUpdate(r.cid, { costCenter: e.target.value })} />
+              <PresetSelect className="input-sm col-span-6 md:col-span-2" scope="COST_CENTER" value={r.costCenter}
+                placeholder="選擇成本中心…" onChange={name => onUpdate(r.cid, { costCenter: name })} />
               <input className="input-sm col-span-10 md:col-span-4" placeholder="例如：修繕費、本期回收X月貨款"
                 value={r.note} onChange={e => onUpdate(r.cid, { note: e.target.value })} />
               <button onClick={() => onRemove(r.cid)} className="btn-danger col-span-2 md:col-span-1" title="刪除">✕</button>
@@ -278,6 +349,10 @@ function CategorySection({ category, rows, revenue, onAdd, onRemove, onUpdate }:
           ))}
         </div>
       )}
+
+      {(['PROCUREMENT', 'PAYROLL', 'FIXED'] as Category[]).includes(category)
+        && rows.some(row => row.source !== 'MANUAL')
+        && <p className="text-xs text-slate-400 mt-2">標示來源的列會在下次匯入時被覆蓋，手動調整請改為新增一列。</p>}
 
       <button onClick={onAdd} className="btn-ghost mt-3 text-emerald-600 hover:text-emerald-700">
         ＋ 新增一筆{cat.label}

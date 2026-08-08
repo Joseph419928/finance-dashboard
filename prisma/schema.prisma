@@ -14,7 +14,7 @@ datasource db {
 // ─────────────────────────────────────────────────────────────────────────
 
 // 每月損益（容器）。各分類「總額」為快取，等於該分類 LineItem 的加總；
-// payrollTotal 來自薪資模組 (PayrollEntry) 的加總。寫入明細時由 API 重算。
+// payrollTotal 等分類總額皆由對應 LineItem 加總；薪資模組可透過匯入產生 LineItem。
 model MonthlyPL {
   id    Int @id @default(autoincrement())
   year  Int
@@ -36,7 +36,7 @@ model MonthlyPL {
   // 所得稅費用（F3）
   incomeTaxCents Int @default(0)
 
-  // 分類總額快取（= 對應 LineItem 加總；payrollTotal = 薪資模組加總）
+  // 分類總額快取（= 對應 LineItem 加總；payrollTotal 可由薪資模組匯入產生）
   procurementTotal        Int @default(0) // 營業成本(採購) 加總
   payrollTotal            Int @default(0) // 薪資費用 加總（來自薪資模組）
   fixedTotal              Int @default(0) // 每月固定支出 加總
@@ -66,9 +66,12 @@ model LineItem {
   note        String    @default("") // 細項備註：此筆費用發生的原因
   costCenter  String    @default("") // 成本中心（地區/據點，如「中區」「總部」），第二維度分析用（F8）
   sortOrder   Int       @default(0)
+  // MANUAL / SUPPLIER / PAYROLL / CARRY_FIXED。匯入以 (monthlyPLId, category, source) 整批取代。
+  source      String    @default("MANUAL")
   monthlyPL   MonthlyPL @relation(fields: [monthlyPLId], references: [id], onDelete: Cascade)
 
   @@index([monthlyPLId, category])
+  @@index([monthlyPLId, source])
 }
 
 // 月結貨主：每月可由使用者自行新增/編輯，系統加總。
@@ -129,6 +132,23 @@ model Shift {
   entry PayrollEntry @relation(fields: [payrollEntryId], references: [id], onDelete: Cascade)
 
   @@index([payrollEntryId])
+}
+
+// 可選取的名稱字典。停用只影響下拉選單，不動既有財務資料。
+model ItemPreset {
+  id         Int      @id @default(autoincrement())
+  scope      String   // LINE_ITEM / SUPPLIER / COST_CENTER
+  category   String   @default("")
+  name       String
+  note       String   @default("")
+  costCenter String   @default("")
+  active     Boolean  @default(true)
+  usageCount Int      @default(0)
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@unique([scope, category, name])
+  @@index([scope, category, active])
 }
 
 // 年度損益表（忠實重現 Excel，例如 2025）。每列為一個會計科目，12 個月 + 年度總計。

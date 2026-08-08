@@ -1,7 +1,9 @@
 'use client'
 import { useEffect, useState, useCallback } from 'react'
+import Link from 'next/link'
 import { fmtCurrency } from '@/lib/formatters'
 import MoneyInput from '@/components/MoneyInput'
+import PresetSelect from '@/components/PresetSelect'
 
 interface Row { cid: string; name: string; amountCents: number; note: string }
 let _c = 0
@@ -14,6 +16,8 @@ export default function SuppliersPage() {
   const [rows, setRows] = useState<Row[]>([])
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState('')
+  const [importing, setImporting] = useState(false)
+  const [showMonthlyLink, setShowMonthlyLink] = useState(false)
 
   void now
   const load = useCallback(async () => {
@@ -33,13 +37,54 @@ export default function SuppliersPage() {
   const del = (id: string) => setRows(r => r.filter(x => x.cid !== id))
   const upd = (id: string, patch: Partial<Row>) => setRows(r => r.map(x => x.cid === id ? { ...x, ...patch } : x))
 
-  async function save() {
+  async function save(): Promise<boolean> {
     setMsg('儲存中...')
-    const res = await fetch(`/api/supplier?year=${year}&month=${month}`, {
-      method: 'PUT', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ suppliers: rows.map(r => ({ name: r.name, amountCents: r.amountCents, note: r.note })) }),
-    })
-    if (res.ok) { setMsg('已儲存'); load() } else setMsg('儲存失敗')
+    setShowMonthlyLink(false)
+    try {
+      const res = await fetch(`/api/supplier?year=${year}&month=${month}`, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ suppliers: rows.map(r => ({ name: r.name, amountCents: r.amountCents, note: r.note })) }),
+      })
+      if (!res.ok) throw new Error('儲存失敗')
+      const data = await res.json()
+      setRows((data.suppliers || []).map((s: { name: string; amountCents: number; note: string }) =>
+        ({ cid: cid(), name: s.name, amountCents: s.amountCents, note: s.note })))
+      setMsg('已儲存')
+      return true
+    } catch (error) {
+      setMsg(error instanceof Error ? error.message : '儲存失敗')
+      return false
+    }
+  }
+
+  async function importToPL() {
+    const target = `${year}/${String(month).padStart(2, '0')}`
+    const importableCount = rows.filter(row => row.name.trim() || row.amountCents !== 0).length
+    if (!confirm(`將 ${target} 的貨主明細（共 ${importableCount} 筆、合計 ${fmtCurrency(total)}）匯入 ${target} 損益表的「營業成本（採購）」？\n\n• 會先儲存本頁目前的編輯內容\n• 損益表中先前由貨主匯入的列會被取代\n• 手動輸入的列不受影響`)) return
+    setImporting(true)
+    setShowMonthlyLink(false)
+    try {
+      if (!(await save())) return
+      const res = await fetch('/api/pl/import/supplier', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ year, month }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || '匯入失敗')
+      if (data.imported === 0) {
+        setMsg(data.message || '沒有可匯入的貨主資料')
+      } else {
+        const warning = data.manualCount > 0
+          ? `；另有 ${data.manualCount} 筆手動輸入的營業成本，請確認是否重複。`
+          : ''
+        setMsg(`已匯入 ${data.imported} 筆至 ${target} 損益表（合計 ${fmtCurrency(data.totalCents)}）${warning}`)
+        setShowMonthlyLink(true)
+      }
+    } catch (error) {
+      setMsg(error instanceof Error ? error.message : '匯入失敗')
+    } finally {
+      setImporting(false)
+    }
   }
 
   async function carry() {
@@ -72,6 +117,9 @@ export default function SuppliersPage() {
           <input className="input-sm w-20" type="number" min={1} max={12} value={month} onChange={e => setMonth(parseInt(e.target.value) || month)} />
         </div>
         <button onClick={carry} className="btn-secondary">↻ 帶入上一期名單</button>
+        <button onClick={importToPL} disabled={importing} className="btn-secondary">
+          {importing ? '匯入中…' : `⇩ 匯入至 ${year}/${month} 損益表`}
+        </button>
         <div className="ml-auto text-right">
           <div className="text-xs text-slate-400">本月合計</div>
           <div className="text-xl font-bold text-slate-800 tabular-nums">{fmtCurrency(total)}</div>
@@ -89,7 +137,8 @@ export default function SuppliersPage() {
             <div className="space-y-2">
               {rows.map(r => (
                 <div key={r.cid} className="grid grid-cols-12 gap-2 items-center">
-                  <input className="input-sm col-span-12 md:col-span-4" placeholder="貨主名稱" value={r.name} onChange={e => upd(r.cid, { name: e.target.value })} />
+                  <PresetSelect className="input-sm col-span-12 md:col-span-4" scope="SUPPLIER" placeholder="選擇貨主名稱…"
+                    value={r.name} onChange={name => upd(r.cid, { name })} />
                   <MoneyInput className="input-sm col-span-8 md:col-span-3"
                     cents={r.amountCents} onChange={c => upd(r.cid, { amountCents: c })} />
                   <input className="input-sm col-span-10 md:col-span-4" placeholder="備註" value={r.note} onChange={e => upd(r.cid, { note: e.target.value })} />
@@ -106,6 +155,7 @@ export default function SuppliersPage() {
       <div className="flex items-center gap-3 mt-4">
         <button onClick={save} className="btn-primary px-8">儲存</button>
         {msg && <span className="text-sm text-emerald-600">{msg}</span>}
+        {showMonthlyLink && <Link className="text-sm text-emerald-700 underline" href={`/monthly/${year}/${month}`}>開啟損益表</Link>}
       </div>
     </div>
   )

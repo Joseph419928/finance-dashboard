@@ -5,12 +5,13 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { calcNetIncome, summarizePeriod, getStatusColor, type MonthlyPL, type LineItem } from '@/lib/types'
 import { fmtCurrency } from '@/lib/formatters'
+import CarryFixedNotice from '@/components/CarryFixedNotice'
 
 export const dynamic = 'force-dynamic'
 
 interface Props {
   params: { year: string; month: string }
-  searchParams: { cmp?: string }
+  searchParams: { cmp?: string; carried?: string; from?: string }
 }
 
 export default async function EditMonthPage({ params, searchParams }: Props) {
@@ -27,6 +28,8 @@ export default async function EditMonthPage({ params, searchParams }: Props) {
   const plRecord = record as unknown as MonthlyPL
   const netIncome = calcNetIncome(plRecord)
   const summary = summarizePeriod(plRecord)
+  const carried = Number(searchParams.carried)
+  const carriedFrom = searchParams.from?.trim() || ''
 
   // 可供「自選某期」比較的期間清單
   const all = await prisma.monthlyPL.findMany({
@@ -53,6 +56,10 @@ export default async function EditMonthPage({ params, searchParams }: Props) {
           </span>
         </div>
       </div>
+
+      {Number.isInteger(carried) && carried > 0 && carriedFrom
+        ? <CarryFixedNotice count={carried} from={carriedFrom} />
+        : null}
 
       {/* F11：每月結算圖表 + 期間比較 */}
       <section className="mb-8">

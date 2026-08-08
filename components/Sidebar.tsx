@@ -8,6 +8,7 @@ const nav = [
   { href: '/suppliers', label: '月結貨主', icon: '📦' },
   { href: '/payroll', label: '薪資管理', icon: '👥' },
   { href: '/report/2025', label: '年度損益表', icon: '📑' },
+  { href: '/settings/presets', label: '名稱設定', icon: '🏷️' },
 ]
 
 interface Props {

@@ -28,6 +28,8 @@ export function sanitizePLData(body: unknown): PLData {
 }
 
 import { isCategory } from './categories'
+import { toLineSource, type LineSource } from './lineSource'
+import { normalizeName } from './preset'
 
 export interface CleanLineItem {
   category: string
@@ -36,6 +38,7 @@ export interface CleanLineItem {
   note: string
   costCenter: string
   sortOrder: number
+  source: LineSource
 }
 
 /** 清洗 + 驗證細項陣列：只留合法分類，金額轉整數分。 */
@@ -46,7 +49,7 @@ export function sanitizeLineItems(input: unknown): CleanLineItem[] {
     const r = (raw ?? {}) as Record<string, unknown>
     const category = String(r.category ?? '')
     if (!isCategory(category)) return
-    const label = String(r.label ?? '').trim()
+    const label = normalizeName(r.label)
     const amtRaw = typeof r.amountCents === 'number' ? r.amountCents : parseFloat(String(r.amountCents))
     const amountCents = Number.isFinite(amtRaw) ? Math.round(amtRaw) : 0
     // 略過完全空白的列（無名稱且金額為 0）
@@ -54,6 +57,7 @@ export function sanitizeLineItems(input: unknown): CleanLineItem[] {
     out.push({
       category, label: label || '(未命名)', amountCents,
       note: String(r.note ?? ''), costCenter: String(r.costCenter ?? ''), sortOrder: i,
+      source: toLineSource(r.source),
     })
   })
   return out

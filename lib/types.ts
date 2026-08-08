@@ -1,5 +1,6 @@
 // 金額單位皆為「分」(整數)。損益分層計算之單一資料來源。
 import { CATEGORIES, type Category, type StatementGroup } from './categories'
+import type { LineSource } from './lineSource'
 
 export interface LineItem {
   id: number
@@ -11,6 +12,7 @@ export interface LineItem {
   /** 成本中心（地區/據點），第二維度分析用，不影響損益層級。F8 */
   costCenter: string
   sortOrder: number
+  source: LineSource
 }
 
 export interface MonthlyPL {

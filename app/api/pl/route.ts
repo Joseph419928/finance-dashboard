@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { parseYearMonth } from '@/lib/pl'
+import { carryFixedFromPrevious } from '@/lib/importPL'
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
@@ -24,10 +25,26 @@ export async function POST(req: NextRequest) {
   const ym = parseYearMonth((body as Record<string, unknown>)?.year, (body as Record<string, unknown>)?.month)
   if (!ym) return NextResponse.json({ error: '年份與月份為必填，且月份須介於 1–12' }, { status: 400 })
 
-  const record = await prisma.monthlyPL.upsert({
+  const existing = await prisma.monthlyPL.findUnique({
+    where: { year_month: { year: ym.year, month: ym.month } },
+  })
+  let record = await prisma.monthlyPL.upsert({
     where: { year_month: { year: ym.year, month: ym.month } },
     update: {},
     create: { year: ym.year, month: ym.month },
   })
-  return NextResponse.json(record, { status: 201 })
+  let carriedFixed = 0
+  let carriedFrom: string | null = null
+  const carryFixed = (body as Record<string, unknown>)?.carryFixed !== false
+  if (!existing && carryFixed) {
+    const carried = await carryFixedFromPrevious(ym.year, ym.month)
+    carriedFixed = carried.copied
+    carriedFrom = carried.from
+    if (carriedFixed > 0) {
+      record = await prisma.monthlyPL.findUniqueOrThrow({
+        where: { year_month: { year: ym.year, month: ym.month } },
+      })
+    }
+  }
+  return NextResponse.json({ ...record, carriedFixed, carriedFrom }, { status: 201 })
 }

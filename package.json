@@ -10,6 +10,7 @@
     "lint": "next lint",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
+    "db:presets": "node prisma/seed-presets.cjs",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate"
   },
