@@ -7,6 +7,7 @@ const nav = [
   { href: '/monthly', label: '每月損益', icon: '📋' },
   { href: '/suppliers', label: '月結貨主', icon: '📦' },
   { href: '/payroll', label: '薪資管理', icon: '👥' },
+  { href: '/payroll/workbench', label: '薪資工作台', icon: '✅' },
   { href: '/report/2025', label: '年度損益表', icon: '📑' },
   { href: '/settings/presets', label: '名稱設定', icon: '🏷️' },
 ]

@@ -178,3 +178,56 @@ model AnnualPLLine {
 
   @@index([year])
 }
+
+// ─────────────────────────────────────────────────────────────────────────
+// 薪資工作流程（期別 / 撥款名單 / 操作紀錄）。皆為新增資料表，不影響既有薪資資料。
+// ─────────────────────────────────────────────────────────────────────────
+
+// 薪資期別 + 審批狀態。每個年月一筆。DRAFT（草稿）→ SUBMITTED（送審）→ APPROVED（已核准）。
+model PayrollPeriod {
+  id         Int       @id @default(autoincrement())
+  year       Int
+  month      Int
+  status     String    @default("DRAFT") // DRAFT / SUBMITTED / APPROVED
+  approver   String    @default("") // 核准人
+  approvedAt DateTime? // 核准時間
+  note       String    @default("")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@unique([year, month])
+  @@index([year, month])
+}
+
+// 匯入的撥款名單（薪資清冊）。每年月每人一列，供薪資工作台審批與加總。
+// 對應「財務-薪資撥款名單」格式：姓名 / 入帳金額 / 身分證號 / 入帳帳號 / 受款人E-Mail / 公司。
+model PayrollRoster {
+  id          Int      @id @default(autoincrement())
+  year        Int
+  month       Int
+  name        String // 姓名
+  amountCents Int      @default(0) // 入帳金額（實發），以「分」儲存
+  idNumber    String   @default("") // 身分證號
+  bankAccount String   @default("") // 入帳帳號
+  email       String   @default("") // 受款人 E-Mail
+  company     String   @default("") // 公司
+  note        String   @default("")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@index([year, month])
+}
+
+// 薪資 / 班表操作紀錄（LOG）。刪除班表、匯入、送審、核准等動作留痕。
+model PayrollLog {
+  id           Int      @id @default(autoincrement())
+  year         Int
+  month        Int
+  action       String // DELETE_SHIFT / IMPORT_ROSTER / CREATE_PERIOD / SUBMIT / APPROVE / REOPEN
+  employeeName String   @default("")
+  detail       String   @default("")
+  actor        String   @default("")
+  createdAt    DateTime @default(now())
+
+  @@index([year, month])
+}

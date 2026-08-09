@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { parseYearMonth } from '@/lib/pl'
-import { raiseInfo, parttimePayCents, totalMinutes } from '@/lib/payroll'
+import { raiseInfo, parttimePayCents, totalMinutes, minToTime } from '@/lib/payroll'
 
 function ym(req: NextRequest) {
   const { searchParams } = new URL(req.url)
@@ -62,7 +62,40 @@ export async function PUT(req: NextRequest) {
   const pt = Array.isArray(b.parttime) ? b.parttime as Record<string, unknown>[] : []
 
   await prisma.$transaction(async (tx) => {
+    // 儲存前先比對既有班表，找出被刪除的班次，寫入操作紀錄（LOG）。
+    const existingEntries = await tx.payrollEntry.findMany({
+      where: { year: p.year, month: p.month },
+      include: { employee: true, shifts: true },
+    })
+    const incomingByEmp = new Map<number, Set<string>>()
+    for (const e of pt) {
+      const eid = num(e.employeeId)
+      if (!eid) continue
+      const set = incomingByEmp.get(eid) ?? new Set<string>()
+      const shifts = Array.isArray(e.shifts) ? e.shifts as Record<string, unknown>[] : []
+      for (const s of shifts) {
+        const d = String(s.date ?? '').trim()
+        if (!d) continue
+        set.add(`${d}|${num(s.startMin)}|${num(s.endMin)}`)
+      }
+      incomingByEmp.set(eid, set)
+    }
+    const deletionLogs: { year: number; month: number; action: string; employeeName: string; detail: string }[] = []
+    for (const e of existingEntries) {
+      const set = incomingByEmp.get(e.employeeId) ?? new Set<string>()
+      for (const s of e.shifts) {
+        const key = `${s.date}|${s.startMin}|${s.endMin}`
+        if (!set.has(key)) {
+          deletionLogs.push({
+            year: p.year, month: p.month, action: 'DELETE_SHIFT', employeeName: e.employee.name,
+            detail: `刪除班表 ${s.date} ${minToTime(s.startMin)}-${minToTime(s.endMin)}`,
+          })
+        }
+      }
+    }
+
     await tx.payrollEntry.deleteMany({ where: { year: p.year, month: p.month } }) // shifts cascade
+    if (deletionLogs.length) await tx.payrollLog.createMany({ data: deletionLogs })
     for (const e of ft) {
       const employeeId = num(e.employeeId)
       if (!employeeId) continue
